@@ -17,7 +17,6 @@ BMI 지수에 따른 결과는 다음과 같다.
 홍길동 170 79 정상
 ***************************
 '''
-
 class Bmi(object):
     def __init__(self, name, cm, kg) -> None:
         self.name = name
@@ -25,14 +24,15 @@ class Bmi(object):
         self.kg = kg
         self.biman = ""
 
-    def get_bmi():
-        kg = self.kg
-        m = self.cm/ 100
-        return kg / m * m
-
     def execute(self):
         self.biman = self.get_biman()
+        self.get_biman()
         self.print_biman()
+
+    def get_bmi(self):
+        kg = self.kg
+        m = self.cm / 100
+        return kg / m ** 2   # **2는 제곱
         
     def get_biman(self):
         biman = ""

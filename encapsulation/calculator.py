@@ -5,16 +5,22 @@ class Calculator(object):
         self.num2 = num2
 
     def calc(self):
-        if self.op == "+":
-            print(f"{self.num1} {self.op} {self.num2} = {self.num1 + self.num2}")
-        if self.op == "-":
-            print(f"{self.num1} {self.op} {self.num2} = {self.num1 - self.num2}")
-        if self.op == "*":
-            print(f"{self.num1} {self.op} {self.num2} = {self.num1 * self.num2}")
-        if self.op == "/":
-            print(f"{self.num1} {self.op} {self.num2} = {self.num1 / self.num2}")
-        elif self.op == "%":
-            print(f"{self.num1} {self.op} {self.num2} = {self.num1 % self.num2}")
+        num1 = self.num1        # 코드를 간단하게 : 가독성 있게 만들어 줌
+        op = self.op
+        num2 = self.num2            
+        if op == "+":
+            result = num1 + num2
+        elif op == "-":         # if와 달리 elif를 사용하면 앞의 if가 충족되었을 때 연산하지 않고 빠르게 넘어감
+            result = num1 - num2
+        elif op == "*":
+            result = num1 * num2
+        elif op == "/":
+            result = num1 / num2
+        elif op == "%":
+            result = num1 % num2
+        else:
+            result = "잘못된 연산입니다."
+        print(f"{num1} {op} {num2} = {result}")
 
 if __name__=="__main__":
     num1 = int(input("숫자 : "))
