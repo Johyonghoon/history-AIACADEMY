@@ -17,22 +17,11 @@ BMI 지수에 따른 결과는 다음과 같다.
 홍길동 170 79 정상
 ***************************
 '''
-class Bmi(object):
-    def __init__(name, cm, kg, biman) -> None:
-        self.name = name
-        self.cm = cm
-        self.kg = kg
-        self.biman = biman
-
-    def print_biman(self):
-        print("### 비만도 계산 ###")
-        print("*" * 40)
-        print("이름 키(cm) 몸무게(kg) 비만도")
-        print("*" * 40)
-        print({name} {cm} {kg} {biman})
-        print("*" * 40)
+class Solution(object):
+    def __init__():
+        pass
 
 if __name__ == "__main__":
-    bmi = Bmi(name, cm, kg)
-    bmi.execute()
-    
+    solution = Solution()
+    Solution.print_biman()
+

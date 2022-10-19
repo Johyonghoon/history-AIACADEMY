@@ -67,7 +67,7 @@ class Bmi(object):
         name = input("이름 : ")
         cm = int(input("키(cm) : "))
         kg = int(input("몸무게(kg) : "))
-        bmi = Bmi(name, cm, kg)
+        bmi = Bmi(name, cm, kg)   #대문자 Bmi를 생성자라고 함
         bmi.execute()
 
 Bmi.main()
