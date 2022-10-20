@@ -19,5 +19,5 @@ RandomList.main()
 '''
 
 if __name__ =="__main__":
-    randomList = RandomList()
-    randomList.print()
+    rl = RandomList()
+    rl.print()

@@ -58,27 +58,53 @@ class Avg(object):
         self.grade = grade
         
         
-    def print_grade(self):
-        name = self.name
-        lang = self.lang
-        eng = self.eng
-        math = self.math
+    def print_info(self):
         avg = round(self.get_avg())
         total = self.get_total()
         grade = self.grade
-        title = "### 성적표 ###"
-        aster = "*" * 40
-        schema = "이름 국어 영어 수학 총점 평균 학점"
-        result = f"{name} {lang} {eng} {math} {avg} {total} {grade}"
-        print(f'{title} \n {aster} \n {schema} \n {aster} \n {result} \n {aster}')
+        print(f"{self.name} {self.lang} {self.eng} {self.math} {avg} {total} {grade}")
+
+    @staticmethod
+    def new_grade():
+        name = input("이름 : ")
+        lang = int(input("국어점수 : "))
+        eng = int(input("영어점수 : "))
+        math = int(input("수학점수 : "))
+        return Avg(name, lang, eng, math)
+
+    @staticmethod
+    def print_grade(ls):
+        for i in ls:
+            i.print_info()
+
+    @staticmethod
+    def print_menu():
+        print("1. 성적 등록")
+        print("2. 성적표")
+        print("3. 성적 삭제")
+        print("4. 종료")
+        return int(input("메뉴 선택 :"))
 
     @staticmethod
     def main():
-            name = input("이름 : ")
-            lang = int(input("국어점수 : "))
-            eng = int(input("영어점수 : "))
-            math = int(input("수학점수 : "))
-            avg = Avg(name, lang, eng, math)
-            avg.execute()
+        ls = []
+        while True:
+            menu = Avg.print_menu()
+            if menu == 1:
+                print("### 성적 등록 ###")
+                avg = Avg.new_grade()
+                ls.append(avg)
+            elif menu == 2:
+                print("### 성적표 ###")
+                print("*" * 35)
+                print("이름 국어 영어 수학 총점 평균 학점")
+                print("*" * 35)
+                Avg.print_grade(ls)
+                print("*" * 35)
+            elif menu == 3:
+                print("### 성적 삭제 ###")
+            elif menu == 4:
+                print("성적표 관리 어플을 종료합니다.")
+                break
 
 Avg.main()
