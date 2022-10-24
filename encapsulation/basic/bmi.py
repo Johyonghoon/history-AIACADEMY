@@ -18,56 +18,24 @@ BMI 지수에 따른 결과는 다음과 같다.
 ***************************
 '''
 class Bmi(object):
-    def __init__(self, name, cm, kg) -> None:
+    def __init__(self, name, cm, kg):
         self.name = name
         self.cm = cm
         self.kg = kg
         self.biman = ""
 
-    def execute(self):
-        self.biman = self.get_biman()
-        self.get_biman()
-        self.print_biman()
-
-    def get_bmi(self):
-        kg = self.kg
-        m = self.cm / 100
-        return kg / m ** 2   # **2는 제곱
-        
-    def get_biman(self):
-        biman = ""
-        bmi = self.get_bmi()
-        if bmi >= 35:
-            biman = "고도비만"
-        elif bmi >= 30:
-            biman = "중(重)도 비만 (2단계 비만)"
-        elif bmi >= 25:
-            biman = "경도 비만 (1단계 비만)"
-        elif bmi >= 23:
-            biman = "과체중"
-        elif bmi >= 18.5:
-            biman = "정상"
-        else:
-            biman = "저체중"
-        self.biman = biman
-
-    def print_biman(self):
-        name = self.name
-        cm = self.cm
-        kg = self.kg
-        biman = self.biman
-        title = "### 비만도 계산 ###"
-        aster = "*"*40
-        schema = "이름 키(cm) 몸무게(kg) 비만도"
-        result = f"{name} {cm} {kg} {biman}"
-        print(f'{title} \n {aster} \n {schema} \n {aster} \n {result} \n {aster}')
+    def print(self):
+        print("### 비만도 계산 ###")
+        print("***************************")
+        print("이름 키(cm) 몸무게(kg) 비만도")
+        print("***************************")
+        print(f"{self.name} {self.cm} {self.kg} {self.biman}")
+        print("***************************")
 
     @staticmethod
     def main():
         name = input("이름 : ")
-        cm = int(input("키(cm) : "))
+        cm = int(input("키(cm) :"))
         kg = int(input("몸무게(kg) : "))
-        bmi = Bmi(name, cm, kg)   #대문자 Bmi를 생성자라고 함
-        bmi.execute()
-
-Bmi.main()
+        bmi = Bmi(name, cm, kg)
+        Bmi.print()

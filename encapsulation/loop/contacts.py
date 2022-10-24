@@ -1,9 +1,8 @@
-'''
+"""
 이름, 전화번호, 이메일, 주소를 받아서
 연락처 입력, 출력, 삭제하는 프로그램을 개발하시오.
 단, 인명은 여러명 저장가능합니다.
-'''
-
+"""
 
 
 class Contact(object):
@@ -14,7 +13,7 @@ class Contact(object):
         self.add = add
 
     def print(self):
-        print("이름 전화번호, 이메일, 주소")
+        print("이름, 전화번호, 이메일, 주소")
         print("*"*50)
         print(f'{self.name} {self.tel} {self.mail} {self.add}')
 
@@ -35,9 +34,7 @@ class Contact(object):
 
     @staticmethod
     def delete_contact(ls, name):
-        del ls[[i for i,j in enumerate(ls) if j.name == name][0]]
-
-        #del ls[[i for i,j in enumerate(ls) if j.name == name][0]]
+        del ls[[i for i, j in enumerate(ls) if j.name == name][0]]
 
     @staticmethod
     def print_menu():
@@ -65,7 +62,6 @@ class Contact(object):
             elif menu == 4:
                 print("주소록 어플을 종료합니다.")
                 break
-
 
 
 Contact.main()

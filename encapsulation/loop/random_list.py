@@ -1,5 +1,6 @@
 import random
 
+
 class RandomList(object):
     def __init__(self) -> None:
         pass
@@ -9,15 +10,11 @@ class RandomList(object):
 
     def print(self):
         print(self.get_random(10, 100, 10))
-'''
+
     @staticmethod
     def main():
         randomList = RandomList()
         randomList.print()
 
-RandomList.main()
-'''
 
-if __name__ =="__main__":
-    rl = RandomList()
-    rl.print()
+RandomList.main()

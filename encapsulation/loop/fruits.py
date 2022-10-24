@@ -9,22 +9,26 @@
 ********************************
 ex) 구매할 과일 : 바
 """
-class Menu(object):
+
+
+class Fruits(object):
+
     def __init__(self) -> None:
         self.menu = ["바나나", "사과", "망고"]
 
     def print_menu(self):
         print("### 과일번호표 ###")
-        print("*" * 40)
-        j=0
-        for i in self.menu :
-            print(f"{j+1}번 과일 : {i}")
+        print("********************************")
+        j = 0
+        for i in self.menu:
+            print(f"{j + 1}번과일: {i}")
             j += 1
-        print("*" * 40)
+        print("********************************")
 
     @staticmethod
     def main():
-        menu = Menu()
-        menu.print_menu()
+        fruits = Fruits()
+        fruits.print_menu()
 
-Menu.main()
+
+Fruits.main()

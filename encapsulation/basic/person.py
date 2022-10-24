@@ -11,8 +11,6 @@
 ********************************
 """
 
-from paramiko import Agent
-
 
 class Person(object):
     def __init__(self, name, num, add) -> None:
@@ -25,6 +23,7 @@ class Person(object):
     def set_age(self):
         
         num = self.num
+        age = self.age
         birthyear = int(num[0]) * 10 + int(num[1])
         todayyear = 122
         if int(num[6]) == 1 or 2 or 5 or 6:
@@ -71,7 +70,5 @@ class Person(object):
         person.set_gen()
         person.print_age()
 
+
 Person.main()
-
-    
-
