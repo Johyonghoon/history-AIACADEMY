@@ -19,17 +19,19 @@
 
 
 class Grade(object):
+
     def __init__(self, name, ko, en, ma):
         self.name = name
         self.ko = ko
         self.en = en
         self.ma = ma
-        self.get_sum()
-        self.get_avg()
-        self.get_grade()
 
     def print(self):
-        print("")
+        print("*" * 40)
+        print("이름 국어 영어 수학 총점 평균 학점")
+        print("*" * 40)
+        print(f"{self.name} {self.ko} {self.en} {self.ma} {self.get_sum} {self.get_avg} {self.get_grade}")
+        pass
 
     @staticmethod
     def print_menu():
@@ -48,13 +50,13 @@ class Grade(object):
                      int(input("수학성적 : ")))
 
     def get_sum(self):
-        self.sum = self.ko + self.en + self.ma
+        return self.ko + self.en + self.ma
 
     def get_avg(self):
-        self.avg = self.sum() / 3
+        return self.get_sum() / 3
 
     def get_grade(self):
-        avg = self.avg()
+        avg = self.get_avg()
         if avg >= 90:
             grade = "A학점"
         elif avg >= 80:
@@ -67,10 +69,10 @@ class Grade(object):
             grade = "E학점"
         else:
             grade = "F학점"
-        self.grade = grade
+        return grade
 
     def print_info(self):
-        print(f"{self.name} {self.ko} {self.en} {self.ma} {self.sum} {self.avg} {self.grade}")
+        print(f"{self.name} {self.ko} {self.en} {self.ma} {self.get_sum()} {self.get_avg()} {self.get_grade()}")
 
     @staticmethod
     def print_grades(ls):
@@ -78,8 +80,8 @@ class Grade(object):
             i.print_info()
 
     @staticmethod
-    def delete_grade():
-        pass
+    def delete_grade(ls, name):
+        del ls[[i for i, j in enumerate(ls) if j.name == name][0]]
 
     @staticmethod
     def main():
@@ -97,7 +99,7 @@ class Grade(object):
                 Grade.print_grades(ls)
             elif menu == 3:
                 print("### 성적표 삭제 ###")
-                Grade.delete_grade()
+                Grade.delete_grade(ls, input("삭제할 이름 : "))
             elif menu == 0:
                 print("### 종료 ###")
                 break

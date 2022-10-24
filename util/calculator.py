@@ -1,4 +1,5 @@
 class Calculator(object):
+
     def __init__(self):
         pass
 
@@ -40,5 +41,6 @@ class Calculator(object):
                 break
             else:
                 print("잘못된 번호입니다. 다시 입력하세요.")
+
 
 Calculator.main()

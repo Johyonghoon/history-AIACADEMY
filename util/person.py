@@ -13,6 +13,7 @@
 
 
 class Person(object):
+
     def __init__(self, name, num, addr):
         self.name = name
         self.num = num
