@@ -17,18 +17,13 @@
 ********************************
 """
 
+
 class Avg(object):
     def __init__(self, name, lang, eng, math) -> None:
         self.name = name
         self.lang = lang
         self.eng = eng
         self.math = math
-        self.grade = ""
-
-    def execute(self):
-        self.grade = self.get_grade()
-        self.get_grade()
-        self.print_grade()
 
     def get_total(self):
         lang = self.lang
@@ -37,11 +32,9 @@ class Avg(object):
         return lang + eng + math
 
     def get_avg(self):
-        total = self.get_total()
-        return total / 3
+        return self.get_total() / 3
 
     def get_grade(self):
-        grade=""
         avg = self.get_avg()
         if avg >= 90:
             grade = "A학점"
@@ -55,14 +48,11 @@ class Avg(object):
             grade = "E학점"
         else:
             grade = "F학점"
-        self.grade = grade
-        
+        return grade
         
     def print_info(self):
-        avg = round(self.get_avg())
-        total = self.get_total()
-        grade = self.grade
-        print(f"{self.name} {self.lang} {self.eng} {self.math} {avg} {total} {grade}")
+        print(f"{self.name} {self.lang} {self.eng} {self.math} "
+              f"{self.get_avg()} {self.get_total()} {self.get_grade()}")
 
     @staticmethod
     def new_grade():
@@ -106,5 +96,6 @@ class Avg(object):
             elif menu == 4:
                 print("성적표 관리 어플을 종료합니다.")
                 break
+
 
 Avg.main()
