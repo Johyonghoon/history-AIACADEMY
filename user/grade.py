@@ -27,20 +27,7 @@ class Grade(object):
         self.ma = ma
 
     def print(self):
-        print("*" * 40)
-        print("이름 국어 영어 수학 총점 평균 학점")
-        print("*" * 40)
-        print(f"{self.name} {self.ko} {self.en} {self.ma} {self.get_sum} {self.get_avg} {self.get_grade}")
         pass
-
-    @staticmethod
-    def print_menu():
-        print("### 메뉴 ###")
-        print("1. 성적 입력")
-        print("2. 성적 조회")
-        print("3. 성적 삭제")
-        print("### 종료 ###")
-        return int(input("메뉴 선택 : "))
 
     @staticmethod
     def new_grade():
@@ -72,37 +59,13 @@ class Grade(object):
         return grade
 
     def print_info(self):
-        print(f"{self.name} {self.ko} {self.en} {self.ma} {self.get_sum()} {self.get_avg()} {self.get_grade()}")
+        return f"{self.name} {self.ko} {self.en} {self.ma} {self.get_sum()} {self.get_avg()} {self.get_grade()}"
 
     @staticmethod
     def print_grades(ls):
         for i in ls:
-            i.print_info()
+            print(i)
 
     @staticmethod
     def delete_grade(ls, name):
         del ls[[i for i, j in enumerate(ls) if j.name == name][0]]
-
-    @staticmethod
-    def main():
-        ls = []
-        while True:
-            menu = Grade.print_menu()
-            if menu == 1:
-                print("### 성적표 입력 ###")
-                grade = Grade.new_grade()
-                ls.append(grade)
-            elif menu == 2:
-                print("### 성적표 출력 ###")
-                print("이름 국어 영어 수학 총점 평균 학점")
-                print("*" * 40)
-                Grade.print_grades(ls)
-            elif menu == 3:
-                print("### 성적표 삭제 ###")
-                Grade.delete_grade(ls, input("삭제할 이름 : "))
-            elif menu == 0:
-                print("### 종료 ###")
-                break
-
-
-Grade.main()

@@ -42,18 +42,7 @@ class Person(object):
         self.gen = gen
 
     def print(self):
-        print("이름 나이 성별 주소")
-        print("*" * 40)
-        print(f"{self.name} {self.age} {self.gen} {self.addr}")
-
-    @staticmethod
-    def print_menu():
-        print("### 목록 ###")
-        print("1. 개인정보 입력")
-        print("2. 개인정보 목록")
-        print("3. 개인정보 삭제")
-        print("0. 종료")
-        return int(input("메뉴 선택 : "))
+        pass
 
     @staticmethod
     def new_person():
@@ -61,38 +50,14 @@ class Person(object):
                       input("주민등록번호(000000-0000000) : "),
                       input("주소 : "))
 
-    def print_info(self):
-        print(f"{self.name} {self.age} {self.gen} {self.addr}")
+    def __str__(self):
+        return f"{self.name} {self.age} {self.gen} {self.addr}"
 
     @staticmethod
     def print_people(ls):
         for i in ls:
-            i.print_info()
+            print(i)
 
     @staticmethod
     def delete_person(ls, name):
         del ls[[i for i, j in enumerate(ls) if j.name == name][0]]
-
-    @staticmethod
-    def main():
-        ls = []
-        while True:
-            menu = Person.print_menu()
-            if menu == 1:
-                print("### 개인정보 입력 ###")
-                person = Person.new_person()
-                ls.append(person)
-            elif menu == 2:
-                print("### 개인정보 목록 ###")
-                print("이름 나이 성별 주소")
-                print("*" * 40)
-                Person.print_people(ls)
-            elif menu == 3:
-                print("### 개인정보 삭제 ###")
-                Person.delete_person(ls, input("삭제할 이름: "))
-            elif menu == 0:
-                print("### 종료 ###")
-                break
-
-
-Person.main()

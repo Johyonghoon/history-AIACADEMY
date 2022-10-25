@@ -17,6 +17,7 @@ BMI 지수에 따른 결과는 다음과 같다.
 홍길동 170 79 정상
 ***************************
 """
+from util.menu import Menu
 
 
 class Bmi(object):
@@ -27,17 +28,7 @@ class Bmi(object):
         self.kg = kg
 
     def print(self):
-        print("")
         pass
-
-    @staticmethod
-    def print_menu():
-        print("### 메뉴 ###")
-        print("1. 개인정보 입력")
-        print("2. 비만도 목록")
-        print("3. 개인정보 삭제")
-        print("### 종료 ###")
-        return int(input("목록 선택 : "))
 
     @staticmethod
     def new_condi():
@@ -65,38 +56,14 @@ class Bmi(object):
             biman = "저체중"
         return biman
 
-    def print_info(self):
-        print(f"{self.name} {self.cm} {self.kg} {self.get_biman()}")
+    def __str__(self):
+        return f"{self.name} {self.cm} {self.kg} {self.get_biman()}"
 
     @staticmethod
     def print_condis(ls):
         for i in ls:
-            i.print_info()
+            print(i)
 
     @staticmethod
     def delete_condi(ls, name):
         del ls[[i for i, j in enumerate(ls) if j.name == name][0]]
-
-    @staticmethod
-    def main():
-        ls = []
-        while True:
-            menu = Bmi.print_menu()
-            if menu == 1:
-                print("### Bmi 등록 ###")
-                bmi = Bmi.new_condi()
-                ls.append(bmi)
-            elif menu == 2:
-                print("### Bmi 목록 ###")
-                Bmi.print_condis(ls)
-            elif menu == 3:
-                print("### Bmi 삭제 ###")
-                Bmi.delete_condi(ls, input("삭제할 이름 : "))
-            elif menu == 0:
-                print("### 종료 ###")
-                break
-            else:
-                print("잘못된 입력입니다. 다시 입력하세요.")
-
-
-Bmi.main()
