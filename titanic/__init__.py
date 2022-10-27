@@ -15,11 +15,21 @@ if __name__ == "__main__":
             plot.draw_survived()
             plot.draw_pclass()
             plot.draw_sex()
+            plot.draw_embarked()
         elif menu == "2":
             print(" ### 모델링 ### ")
+            df = api.modeling('train.csv', 'test.csv')
+            # ['PassengerId', 'Survived', 'Pclass', 'Name', 'Sex', 'Age', 'SibSp',
+            # 'Parch', 'Ticket', 'Fare', 'Cabin', 'Embarked']
+            # === null 값===
+            # Age            177
+            # Cabin          687
+            # Embarked         2
         elif menu == "3":
             print(" ### 머신 러닝 ### ")
+            df = api.learning('train.csv', 'test.csv')
         elif menu == "4":
             print(" ### 배포 ### ")
+            df = api.submit('train.csv', 'test.csv')
         else:
             print("다른 메뉴를 선택하세요.")
