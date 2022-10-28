@@ -22,7 +22,11 @@ class TitanicController(object):
         this.test = model.new_model(test)
         this.id = this.test['PassengerId']
         # columns 편집과정
-
+        # this = model.pclass_ordinal(this) 데이터 자체가 이미 오디너리
+        this = model.sex_norminal(this)
+        this = model.age_ordinal(this)
+        this = model.fare_ordinal(this)
+        this = model.embarked_norminal(this)
         return this
 
     def modeling(self, train, test) -> object:       #모델생성

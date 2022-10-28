@@ -19,12 +19,6 @@ if __name__ == "__main__":
         elif menu == "2":
             print(" ### 모델링 ### ")
             df = api.modeling('train.csv', 'test.csv')
-            # ['PassengerId', 'Survived', 'Pclass', 'Name', 'Sex', 'Age', 'SibSp',
-            # 'Parch', 'Ticket', 'Fare', 'Cabin', 'Embarked']
-            # === null 값===
-            # Age            177
-            # Cabin          687
-            # Embarked         2
         elif menu == "3":
             print(" ### 머신 러닝 ### ")
             df = api.learning('train.csv', 'test.csv')
