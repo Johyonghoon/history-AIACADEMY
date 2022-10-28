@@ -4,6 +4,7 @@ from util.dataset import Dataset
 
 class TitanicController(object):
 
+    dataset = Dataset()
     model = TitanicModel()
 
     def __init__(self):
@@ -11,9 +12,6 @@ class TitanicController(object):
 
     def __str__(self):
         return f""
-
-    dataset = Dataset()
-    model = TitanicModel()
 
     def preprocess(self, train, test) -> object:     #전처리
         model = self.model
@@ -42,3 +40,10 @@ class TitanicController(object):
     def submit(self):                   #베포
         pass
 
+
+if __name__ == '__main__':
+    tc = TitanicController()
+    this = Dataset()
+    this = tc.preprocess('train.csv', 'test.csv')
+    print(this.train.columns)
+    print(this.train.head(5))

@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 
 import titanic
@@ -60,13 +61,6 @@ class TitanicModel(object):
         return this
 
     @staticmethod
-    def pclass_ordinal(this) -> object:  # 1, 2, 3등칸
-        train = this.train
-        test = this.test
-        print(train('Pclass'))
-        return this
-
-    @staticmethod
     def sex_norminal(this) -> object:  # male, female
         for i in [this.train, this.test]:
             i['Gender'] = i['Sex'].map({"male": 0, "female": 1})
@@ -74,8 +68,15 @@ class TitanicModel(object):
 
     @staticmethod
     def age_ordinal(this) -> object:  # 연령대 10대, 20대, 30대
-        train = this.train
-        test = this.test
+        for i in [this.train, this.test]:
+            i['Age'] = i['Age'].fillna(-0.5)
+        bins = [-1, 0, 5, 12, 18, 24, 35, 68, np.inf]
+        labels = ['Unknown', 'Baby', 'Child', 'Teenager', 'Student', 'Young Adult', 'Adult', 'Senior']
+        age_mapping = {'Unknown': 0, 'Baby': 1, 'Child': 2, 'Teenager': 3, 'Student': 4,
+                             'Young Adult': 5, 'Adult': 6, 'Senior': 7}
+        for i in [this.train, this.test]:
+            i['AgeGroup'] = pd.cut(i['Age'], bins=bins, labels=labels)
+            i['AgeGroup'] = i['AgeGroup'].map(age_mapping)
         return this
 
     @staticmethod
@@ -99,6 +100,6 @@ if __name__ == '__main__':
     this = Dataset()
     this.train = t.new_model('train.csv')
     this.test = t.new_model('test.csv')
-    this = TitanicModel.embarked_norminal(this)
+    this = t.age_ordinal(this)
     print(this.train.columns)
     print(this.train.head(10))
