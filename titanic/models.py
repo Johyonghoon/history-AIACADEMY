@@ -56,8 +56,8 @@ class TitanicModel(object):
     @staticmethod
     def drop_features(this, *feature) -> object:
         for i in feature:
-            this.train = this.train.drop(i, axis=i)
-            this.test = this.test.drop(i, axis=i)
+            this.train = this.train.drop(i, axis=1)
+            this.test = this.test.drop(i, axis=1)
         return this
 
     @staticmethod
@@ -92,6 +92,28 @@ class TitanicModel(object):
         this.test = this.test.fillna({'Embarked':'S'})
         for i in [this.train, this.test]:
             i['Embarked'] = i['Embarked'].map({"S": 1, "C": 2, "Q": 3})
+        return this
+
+    @staticmethod
+    def title_norminal(this) -> object:
+        combine = [this.train, this.test]                                        # 첫번째 for문에서 수정한 값을 담아서 다음 for문에 사용하려면 새로 인스턴스로 정의해주어야 담아서 사용할 수 있음
+        for i in combine:
+            i['Title'] = i.Name.str.extract('([A-Za-z]+)\.', expand=False)       # i.Name 을 해주는 것은 i 가 객체기 때문 / i['']를 하고 싶다면 i가 리스트여야 함 / str은 object의 값을 뜻함
+                                                                                 # expand=False 앞의 값이 맞다면 그 값만 가져오라는 뜻
+        for i in combine:
+            i['Title'] = i['Title'].replace(['Countess', 'Lady', 'Sir'], 'Royal')
+            i['Title'] = i['Title'].replace(['Capt', 'Col', 'Don', 'Dr', 'Major', 'Rev', 'Jonkheer', 'Dona', 'Mme'], 'Rare')
+            i['Title'] = i['Title'].replace('Mlle', 'Mr')
+            i['Title'] = i['Title'].replace('Ms', 'Miss')
+            i['Title'] = i['Title'].fillna(0)
+            i['Title'] = i['Title'].map({
+                'Mr': 1,
+                'Miss': 2,
+                'Mrs': 3,
+                'Master': 4,
+                'Royal': 5,
+                'Rare': 6
+            })
         return this
 
 
