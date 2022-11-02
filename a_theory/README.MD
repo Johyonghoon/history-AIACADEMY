@@ -26,11 +26,12 @@
 #### 엣지
 ###### 마르-힐드레스(Marr Hildreth) 엣지 검출기
 ###### 캐니(Canny) 엣지 검출기
-###### 1. 스무딩(Smoothing, 블러) : 노이즈 제거 -> 가우시안 필터
-###### 2. 그레디언트(Finding Gradients) : 경사(=미분)값을 통하여 에지를 찾는다.
-###### 3. 노름(Norm, 강도)/디렉션(Direction, 방향)을 구한다 → 피타고라스 정리/삼각 함수 이용
-###### 4. 극한값과 임계값을 구한다.
-###### 5. 엣지트랙킹(Edgy Tracking by Hysteresis)를 구한다.
+###### 1. 스무딩(블러): 가우시안 필터를 이용한 노이즈 제거한다
+###### 2. 그레디언트: 소벨필터를 이용한 그래디언트의 크기(intensity)를 찾는다
+###### 3. Non-maximum suppression을 적용하여 거짓 반응을 제거한다.
+###### 4. 경계선으로써 가능성 있는 픽셀을 골라내기 위해 double threshold 방식을 적용한다.
+###### 5. 앞서 double threshold 방식에서 maxVal을 넘은 부분을 strong edge, 
+######    minVal과 maxVal 사이의 부분을 weak edge로 설정하여 strong edge와 연결되어 있는 weak edge를 edge로 판단하고 그렇지 않는 부분은 제거한다. (Hysteresis thresholding)
 ### 잡음(Noise)
 ###### 가우시안 잡음(Gaussian Noise)
 ###### 점 잡음(Salt-And-Pepper Noise)
@@ -48,4 +49,15 @@
 ### 이진화
 ###### 전역 임계치 설정
 ###### 적응적 임계치 결정
-###### 
+
+### 영상처리
+###### HoG(Histogram of Oriented Gradient) 서술자
+###### blob(Binary Large OBject)
+###### LoG(laplacian of gaussian)
+###### DoG(difference of gaussian)
+###### SIFT(Scale-Invariant Feature Transform)
+###### 동차좌표
+###### k-d 트리
+###### RANSAC(RANdom SAmple Consensus)
+
+
