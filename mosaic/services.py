@@ -6,6 +6,9 @@ import matplotlib.pyplot as plt
 from const.crawler import HEADERS
 import cv2 as cv
 
+from const.path import CTX
+from util.dataset import Dataset
+
 
 def ImageToNumberArray(url):
     res = requests.get(url, headers=HEADERS)
@@ -25,18 +28,25 @@ def Hough(edges):
 
 
 def Haar(*params):
-    girl_control = params[0]
+    img_original = params[0]
     haar = params[1]
-    face = haar.detectMultiScale(girl_control, minSize=(150, 150))
+    face = haar.detectMultiScale(img_original, minSize=(150, 150))
     if len(face) == 0:
-        print("얼굴인식 실패")
+        print(f"얼굴인식 실패")
         quit()
-    for (x, y, w, h,) in face:
+    for (x, y, w, h) in face:
         print(f'얼굴의 좌표 : {x},{y},{w},{h}')
-        red = (255, 0, 0)
-        cv.rectangle(girl_control, (x, y), (x + w, y + h), red, thickness=20)
-    rect = (x, y, x+w, y+h)
-    return rect
+    x1, y1, x2, y2 = x, y, x+w, y+h
+
+    return x1, y1, x2, y2
+
+
+def Canny(img):
+    return cv.Canny(np.array(img), 10, 100)
+
+
+def Haar_context(haar):
+    return cv.CascadeClassifier(f"{CTX}{haar}")
 
 
 def Mosaic(img, rect, size):
@@ -49,6 +59,8 @@ def Mosaic(img, rect, size):
     img2 = img.copy()
     img2[y1:y2, x1:x2] = i_mos
     return img2
+
+"""
 
 
 def GaussianBlur(src, sigmax, sigmay):
@@ -168,8 +180,9 @@ if __name__ == '__main__':
     img = Canny(GaussianBlur(img, 1, 1), 50, 150)
     plt.imshow((lambda x: Image.fromarray(x))(img))
     plt.show()
-'''
+    
     img = Canny(img)
     GaussianBlur.get(img, 1, 1)
     CannyModel()
-'''
+"""
+

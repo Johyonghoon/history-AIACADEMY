@@ -1,4 +1,4 @@
-from titanic.models import TitanicModel
+from titanic.services import TitanicModel
 from util.dataset import Dataset
 import matplotlib.pyplot as plt
 import seaborn as sns

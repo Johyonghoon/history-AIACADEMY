@@ -1,4 +1,4 @@
-from mosaic.views import MenuController
+from mosaic.views import MosaicController
 from util.menu import Menu
 LENNA = "Lenna.png"
 SOCCER = "https://docs.opencv.org/4.x/roi.jpg"
@@ -7,12 +7,13 @@ HAAR = "haarcascade_frontalface_alt.xml" # 가중치 파일
 GIRL = "girl.jpg"
 GIRL_INCLINED = "girl_incliend.png"
 GIRL_SIDE_FACE = "girl_side_face.jpg"
-GIRL_WITH_MOM = "girl_with_mom.jpg"
+GIRL_WITH_MOM = "girl_withmom.jpg"
 CAT = "cat.jpg"
+PEOPLE = "people.jpg"
 FACE_TARGET = ""
 FACE_OBJECT = ""
 if __name__ == '__main__':
-    api = MenuController()
+    api = MosaicController()
     while True:
         menus = ["종료","원본보기","그레이스케일",
                  "엣지검출","직선검출","모자이크",
@@ -28,6 +29,6 @@ if __name__ == '__main__':
         elif menu == "4": api.menu_4_hough(menus[4], BUILDING)
         elif menu == "5": api.menu_5_mosaic(menus[5], CAT)
         elif menu == "6": api.menu_6_girl_mosaic(menus[6], HAAR, GIRL)
-        elif menu == "7": api.menu_7_family_mosaic(menus[7])
+        elif menu == "7": api.menu_7_mosaics(menus[7], HAAR, PEOPLE)
         else:
             print(" ### 해당 메뉴 없음 ### ")

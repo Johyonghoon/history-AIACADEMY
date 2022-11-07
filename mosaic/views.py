@@ -1,5 +1,5 @@
 from matplotlib import pyplot as plt
-from mosaic.services import ImageToNumberArray, Hough, Haar, Mosaic
+from mosaic.services import ImageToNumberArray, Hough, Haar, Mosaic, Canny, Haar_context
 from util.lambdas import MosaicLambda
 import cv2 as cv
 import numpy as np
@@ -7,7 +7,7 @@ import numpy as np
 from util.dataset import Dataset
 
 
-class MenuController(object):
+class MosaicController(object):
 
     @staticmethod
     def menu_0(*params):
@@ -52,8 +52,7 @@ class MenuController(object):
         building_original = ImageToNumberArray(params[1])
         plt.subplot(121), plt.imshow(building_original, cmap='gray')
         plt.title('Original Image'), plt.xticks([]), plt.yticks([])
-
-        edges = cv.Canny(building_original, 100, 200) # (image, threshold 1=100, threshold 2=200)
+        edges = Canny(building_original) # (image, threshold 1=100, threshold 2=200)
         building_hough = Hough(edges)
         plt.subplot(122), plt.imshow(building_hough, cmap='gray')
         plt.title('Hough Image'), plt.xticks([]), plt.yticks([])
@@ -73,13 +72,17 @@ class MenuController(object):
     @staticmethod
     def menu_6_girl_mosaic(*param):
         print(param[0])
-        haar = cv.CascadeClassifier(f"{Dataset().context}{param[1]} ")
         girl_control = MosaicLambda('IMAGE_READ_FOR_PLT', param[2])
         girl_original = girl_control.copy()
         girl_gray = MosaicLambda('GRAY_SCALE', girl_control)
-        girl_canny = cv.Canny(np.array(girl_control), 10, 100)
+        girl_canny = Canny(girl_control)
         girl_hough = Hough(girl_canny)
-        rect = Haar(girl_control, haar)
+        haar = param[1]
+        haar = Haar_context(haar)
+        x1, y1, x2, y2 = Haar(girl_control, haar)
+        rect = (x1, y1, x2, y2)
+        red = (255, 0, 0)
+        girl_haar = cv.rectangle(girl_control, (x1, y1), (x2, y2), red, thickness=20)
         girl_mos = Mosaic(girl_original, rect, 10)
 
         plt.subplot(161), plt.imshow(girl_original, cmap='gray')
@@ -90,30 +93,52 @@ class MenuController(object):
         plt.title('Edge'), plt.xticks([]), plt.yticks([])
         plt.subplot(164), plt.imshow(girl_hough, cmap='gray')
         plt.title('Hough'), plt.xticks([]), plt.yticks([])
-        plt.subplot(165), plt.imshow(girl_control, cmap='gray')
+        plt.subplot(165), plt.imshow(girl_haar, cmap='gray')
         plt.title('HAAR'), plt.xticks([]), plt.yticks([])
         plt.subplot(166), plt.imshow(girl_mos, cmap='gray')
         plt.title('Mosaic'), plt.xticks([]), plt.yticks([])
         plt.show()
 
     @staticmethod
-    def menu_7_family_mosaic(*param):
+    def menu_7_mosaics(*param):
         print(param[0])
-        haar = cv.CascadeClassifier(f"{Dataset().context}{param[1]} ")
-        girl_control = MosaicLambda('IMAGE_READ_FOR_PLT', param[2])
-        girl_haar = haar.detectMultiScale(girl_control, minSize=(150, 150))
-        girl_haar, rect = Haar(girl_haar, girl_control)
+        haar = param[1]
+        haar = Haar_context(haar)
+        img_original = MosaicLambda('IMAGE_READ_FOR_PLT', param[2])
+        img_control = img_original.copy()
+        face = haar.detectMultiScale(img_control, minSize=(150, 150))
+        while True:
+            if len(face) == 0:
+                print(f"얼굴인식 실패")
+                quit()
+            for (x, y, w, h) in face:
+                print(f'얼굴의 좌표 : {x},{y},{w},{h}')
+                rect = x, y, x+w, y+h
+                Mosaic(img_control, rect, 10)
 
-        plt.imshow(girl_haar, cmap='gray')
-        plt.title('HAAR'), plt.xticks([]), plt.yticks([])
+        plt.imshow(img_control, cmap='gray')
+        plt.title('Mosaics'), plt.xticks([]), plt.yticks([])
+        plt.show()
+"""
+        img_original = params[0]
+        haar = params[1]
+        face = haar.detectMultiScale(img_original, minSize=(150, 150))
+        if len(face) == 0:
+            print(f"얼굴인식 실패")
+            quit()
+        for (x, y, w, h) in face:
+            print(f'얼굴의 좌표 : {x},{y},{w},{h}')
+        x1, y1, x2, y2 = x, y, x + w, y + h
+"""
+"""
+        plt.imshow(girl_original, cmap='gray')
+        plt.title('Mosaic'), plt.xticks([]), plt.yticks([])
         plt.show()
 
 """
-        cv.imwrite(f'{Dataset().context}cat-mosaic.png', girl_mos)
-        cv.imshow('CAT MOSAIC', girl_mos)
-        cv.waitKey(0)
-        cv.destroyAllWindows()
-"""
+
+
+
 
 
 
