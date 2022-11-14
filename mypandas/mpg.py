@@ -177,6 +177,7 @@ if __name__ == '__main__':
             api.describe_include()
         elif menu == '7':
             print(MENUS[7])
+            api.change_meta()
         elif menu == '8':
             print(MENUS[8])
             api.create_test_variable()
