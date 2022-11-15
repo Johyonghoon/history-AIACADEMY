@@ -1,12 +1,14 @@
 import pandas as pd
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OrdinalEncoder
+from imblearn.under_sampling import RandomUnderSampler
 
 STROKE_MENUS = ["종료",   # 0
                 "데이터구하기",   # 1
-                "한글화",   # 2
-                "타깃변수설정",   # 3
-                "데이터처리",    # 4
-                "시각화",  # 5
+                "변수한글화",   # 2
+                "연속형변수편집",   # 3
+                "범주형변수편집",    # 4
+                "샘플링",  # 5
                 "모델링",  # 6
                 "학습",   # 7
                 "예측"    # 8
@@ -30,8 +32,8 @@ stroke_menu = {
     "1" : lambda t: t.spec(),
     "2" : lambda t: t.rename_meta(),
     "3" : lambda t: t.interval_variables(),
-    "4" : lambda t: t.categorical_variables(),
-    "5" : lambda t: t.find_high_cty(),
+    "4" : lambda t: t.norminal_variables(),
+    "5" : lambda t: t.sampling(),
     "6" : lambda t: t.find_highest_hwy(),
     "7" : lambda t: t.which_cty_in_suv_compact(),
     "8" : lambda t: t.find_top5_hwy_in_audi(),
@@ -96,11 +98,14 @@ class StrokeService:
         print(self.my_stroke.columns)
 
     '''
-    3. 타깃변수(=종속변수 dependant, y값) 설정
-       입력변수(=설명변수, 확률변수, X값)
-       타깃변수명: stroke (=뇌졸중)
-       타깃변수값: 과거에 한 번이라도 뇌졸중이 발병했으면 1, 아니면 0
+    타깃변수(=종속변수 dependant, y값) 설정
+    입력변수(=설명변수, 확률변수, X값)
+    타깃변수명: stroke (=뇌졸중)
+    타깃변수값: 과거에 한 번이라도 뇌졸중이 발병했으면 1, 아니면 0
     '''
+    """
+    3. 연속형 = ['나이', '평균혈당', '비만도']
+    """
     def interval_variables(self):
         self.rename_meta()
         df = self.my_stroke
@@ -118,21 +123,22 @@ class StrokeService:
         df = self.adult_stroke
         c1 = df['평균혈당'] <= 232.64
         c2 = df['비만도'] <= 60.3
-        self.adult_stroke =self.adult_stroke[c1 & c2]
-        print(f"--- 이상치 제거한 스펙 --- \n{self.adult_stroke.shape}")
+        self.adult_stroke = self.adult_stroke[c1 & c2]
+        print(f"--- 이상치 제거한 성인객체스펙 --- \n{self.adult_stroke.shape}")
 
+    def ratio_variables(self):  # 해당 컬럼 없음
+        pass
     '''
     4. 범주형 = ['성별', '고혈압', '심장병', '기혼여부', 
                 '직종', '거주형태', '흡연여부']
     '''
-    def categorical_variables(self):
-        self.rename_meta()
-        df = self.my_stroke
+    def norminal_variables(self):
+        self.interval_variables()
+        df = self.adult_stroke
         cols_categorical = ['성별', '고혈압', '심장병', '기혼여부', '직종', '거주형태', '흡연여부']
         print(f"--- 범주형 변수 데이터타입 --- \n {df[cols_categorical].dtypes}")
         print(f"--- 범주형 변수 결측값 --- \n {df[cols_categorical].isnull().sum()}")
-        print(f"--- 결측값 있는 변수 --- \n {df[cols_categorical].isna().any()[lambda x: x]}")
-        # 결측값이 없음
+        print(f"--- 결측값 있는 변수 --- \n {df[cols_categorical].isna().any()[lambda x: x]}") # 결측값이 없음
         df['성별'] = OrdinalEncoder().fit_transform(df['성별'].values.reshape(-1,1))
         df['기혼여부'] = OrdinalEncoder().fit_transform(df['기혼여부'].values.reshape(-1, 1))
         df['직종'] = OrdinalEncoder().fit_transform(df['직종'].values.reshape(-1, 1))
@@ -144,10 +150,24 @@ class StrokeService:
         print(" ### 프리프로세스 종료 ###")
         self.stroke.to_csv("./save/stroke.csv")
 
-    '''
-    5. 
-    '''
+    def ordinal_variables(self):   # 해당 컬럼 없음
+        pass
 
+    def sampling(self):
+        dframe = pd.read_csv('./save/stroke.csv')
+        data = dframe.drop(['뇌졸중'], axis=1)
+        target = dframe['뇌졸중']
+        undersample = RandomUnderSampler(sampling_strategy=0.333, random_state=2)
+        data_under, target_under = undersample.fit_resample(data, target)
+        print(target_under.value_counts(dropna=True))
 
+        # 50:50 비율로 데이터 분할
+        X_train, X_test, y_train, y_test = train_test_split(data_under, target_under,
+                                                            test_size=0.5, random_state=42, stratify=target_under)
+        print(f"X_train shape : {X_train.shape}")
+        print(f"X_test shape : {X_test.shape}")
+
+        print(f"y_train shape : {y_train.shape}")
+        print(f"y_test shape : {y_test.shape}")
 
 
