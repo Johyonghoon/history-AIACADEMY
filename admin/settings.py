@@ -31,6 +31,24 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "users.apps.UsersConfig",
+    "movie.cinemas.apps.CinemasConfig",
+    "movie.movie_users.apps.MovieUsersConfig",
+    "movie.movies.apps.MoviesConfig",
+    "movie.showtimes.apps.ShowtimesConfig",
+    "movie.theater_tickets.apps.TheaterTicketsConfig",
+    "movie.theaters.apps.TheatersConfig",
+    "blog.blog_users.apps.BlogUsersConfig",
+    "blog.comments.apps.CommentsConfig",
+    "blog.posts.apps.PostsConfig",
+    "blog.tags.apps.TagsConfig",
+    "blog.views.apps.ViewsConfig",
+    "shop.carts.apps.CartsConfig",
+    "shop.categories.apps.CategoriesConfig",
+    "shop.deliveries.apps.DeliveriesConfig",
+    "shop.orders.apps.OrdersConfig",
+    "shop.products.apps.ProductsConfig",
+    "shop.shop_users.apps.ShopUsersConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -76,14 +94,13 @@ WSGI_APPLICATION = "admin.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": BASE_DIR / "mydb",
+        "NAME": "mydb",
         "USER": "root",
         "PASSWORD": "root",
-        "HOST": "mysql-container",
+        "HOST": "localhost",
         "PORT": "3306"
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
