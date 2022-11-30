@@ -9,7 +9,7 @@ from shop.shop_users.models import ShopUser
 class Order(models.Model):
     use_in_migrations = True
     id = models.AutoField(primary_key=True)
-    created_at = models.DateField(default=timezone.now)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
     user_id = models.ForeignKey(ShopUser, on_delete=models.CASCADE)

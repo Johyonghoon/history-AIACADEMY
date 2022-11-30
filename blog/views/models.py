@@ -9,7 +9,7 @@ class View(models.Model):
     use_in_migrations = True
     id = models.AutoField(primary_key=True)
     ip_address = models.CharField(max_length=15)
-    created_at = models.DateField(default=timezone.now)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     user_id = models.ForeignKey(BlogUser, on_delete=models.CASCADE)
     post_id = models.ForeignKey(Post, on_delete=models.CASCADE)
