@@ -13,5 +13,4 @@ const Counter = () => {
         </button>
     </>)
 }
-
 export default Counter

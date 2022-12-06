@@ -1,9 +1,9 @@
-import Container from "./containers/Home"
+import { Home } from "common"
 
 
 const App = () => {
   return (<>
-  <Container/>
+  <Home/>
   </>)
 }
 

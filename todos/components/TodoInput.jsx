@@ -1,7 +1,8 @@
+import 'todos/styles/TodoInput.css'
 import { useState } from "react"
 import { useDispatch } from 'react-redux'
 import { v4 as uuidv4 } from 'uuid'
-import { addTodoAction } from '../../store/todo.reducer'
+import { addTodoAction } from 'todos/reducers/todo.reducer'
 
 const TodoInput = () => {
     const [todo, setTodo] = useState('')

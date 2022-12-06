@@ -1,3 +1,5 @@
+
+
 const initialState = { todos: [], todo: {} }
 
 export const addTodoAction = todo => ({type: "ADD_TODO", payload: todo})
@@ -20,3 +22,24 @@ const todoReducer = (state = initialState, action) => {
 } 
 
 export default todoReducer
+
+/**
+
+const todoSlice = createSlice({
+  name: 'todos',
+  initialState: {
+    todoState: {id: '', name: '', complete: False},
+    todosState: [],
+    type: '',
+    keyword: '',
+    params: {}
+  },
+  reducers : {
+    [addTodo.fulfilled]: ( state, action ) => {
+      state.todoState = action.payload
+    },
+    [toggleTodo.fulfilled]: state.todos.map( todo => (todo.id === action.payload) ? {...todo, complete: !todo.complete state, action ) => {},
+    [deleteTodo.fulfilled]: ( state, action ) => {},
+  }
+})
+ */

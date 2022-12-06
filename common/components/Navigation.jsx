@@ -5,6 +5,8 @@ const Navigation = () => <nav>
         <li><Link to="/home">Home</Link></li>
         <li><Link to="/count">Counter</Link></li>
         <li><Link to="/todos">Todos</Link></li>
+        <li><Link to="/signup">SignUp</Link></li>
+        <li><Link to="/login">Login</Link></li>
     </ul>   
 </nav>
 

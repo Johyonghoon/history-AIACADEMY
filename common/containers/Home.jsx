@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom"
-import { Counter, Footer, Navigation } from "../components"
-import Schedule from "./Schedule"
-
+import { Schedule } from "todos"
+import { Counter, Footer, Navigation } from "common"
+import { Login, SignUp } from "auth"
 
 const Home = () => {
     return (<>
@@ -14,11 +14,13 @@ const Home = () => {
             </tr>
         </thead>
         <tbody>
-        <tr style={{ width: "20%",height: "80%",  border: "1px solid black"}}>
+        <tr style={{ width: "20%", height: "80%",  border: "1px solid black"}}>
             <td style={{ width: "100%", border: "1px solid black"}}>
             <Routes>
                 <Route path="/count" element={<Counter/>}></Route>
                 <Route path="/todos" element={<Schedule/>}></Route>
+                <Route path="/signup" element={<SignUp/>}></Route>
+                <Route path="/login" element={<Login/>}></Route>
             </Routes>
             </td>
         </tr>
