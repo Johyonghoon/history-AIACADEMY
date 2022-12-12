@@ -18,14 +18,14 @@ MOSAIC_MENUS = ["종료",  # 0
                 "모녀 모자이크"  # 7
                 ]
 
-LENNA = "./../../../../../static/data/dam/per/computer_vision/mosaic/Lenna.png"
+LENNA = "./../../../../../static/titanic/dam/per/computer_vision/mosaic/Lenna.png"
 SOCCER = "https://docs.opencv.org/4.x/roi.jpg"
 BUILDING="http://amroamroamro.github.io/mexopencv/opencv_contrib/fast_hough_transform_demo_01.png"
-CAT = "./../../../../../static/data/dam/per/computer_vision/mosaic/cat.jpg"
+CAT = "./../../../../../static/titanic/dam/per/computer_vision/mosaic/cat.jpg"
 CAT_MOSAIC = "./../../../../../static/save/dam/per/computer_vision/mosaic/cat_mosaic.jpg"
-GIRL = "./../../../../../static/data/dam/per/computer_vision/mosaic/girl.jpg"
-HAAR = "./../../../../../static/data/dam/per/computer_vision/mosaic/haarcascade_frontalface_alt.xml" # 가중치 파일
-PEOPLE = "./../../../../../static/data/dam/per/computer_vision/mosaic/people.jpg"
+GIRL = "./../../../../../static/titanic/dam/per/computer_vision/mosaic/girl.jpg"
+HAAR = "./../../../../../static/titanic/dam/per/computer_vision/mosaic/haarcascade_frontalface_alt.xml" # 가중치 파일
+PEOPLE = "./../../../../../static/titanic/dam/per/computer_vision/mosaic/people.jpg"
 
 
 def ImageToNumberArray(url):
@@ -179,14 +179,24 @@ class MosaicController(object):
         img_original = MosaicLambda('IMAGE_READ_FOR_PLT', param[2])
         img_control = img_original.copy()
         face = haar.detectMultiScale(img_control, minSize=(150, 150))
+        print(face)
+        while len(face) != 0:
+            for i, (x, y, w, h) in face:
+                print(f'얼굴의 좌표 : {x},{y},{w},{h}')
+                rect = x, y, x + w, y + h
+                img_mosc = Mosaic(img_control, rect, 10)
+                img_control = img_mosc
+                del face[i]
+                if len(face) == 0:
+                    quit()
+
+        """
         while True:
             if len(face) == 0:
                 print(f"얼굴인식 실패")
                 quit()
-            for (x, y, w, h) in face:
-                print(f'얼굴의 좌표 : {x},{y},{w},{h}')
-                rect = x, y, x+w, y+h
-                Mosaic(img_control, rect, 10)
+            else:
+        """
 
         plt.imshow(img_control, cmap='gray')
         plt.title('Mosaics'), plt.xticks([]), plt.yticks([])

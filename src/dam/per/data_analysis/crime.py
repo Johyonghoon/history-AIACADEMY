@@ -62,12 +62,12 @@ class CrimeService:
     def __init__(self):
         self.crime = pd.read_csv('./../../../../static/data/dam/per/crime/crime_in_seoul.csv')
         self.cctv = pd.read_csv('./../../../../static/data/dam/per/crime/cctv_in_seoul.csv')
-        self.pop = pd.read_excel('./../../../../static/data/dam/per/crime/pop_in_seoul.xls',
+        self.pop = pd.read_excel('./../../../../static/titanic/dam/per/crime/pop_in_seoul.xls',
                                  usecols=['자치구', '합계', '한국인', '등록외국인', '65세이상고령자'], skiprows=[0, 2, 29])
         self.us_unemployment = pd.read_csv('./../../../../static/data/dam/per/crime/us_unemployment.csv')
-        set_json_from_df("./../../../../static/data/dam/per/crime/us-states.json")
-        self.us_states = "./../../../../static/data/dam/per/crime/us-states.json"
-        self.kr_states = "./../../../../static/data/dam/per/crime/kr-state.json"
+        set_json_from_df("./../../../../static/titanic/dam/per/crime/us-states.json")
+        self.us_states = "./../../../../static/titanic/dam/per/crime/us-states.json"
+        self.kr_states = "./../../../../static/titanic/dam/per/crime/kr-state.json"
 
         cols = ['절도 발생', '절도 검거', '폭력 발생', '폭력 검거']
         self.crime[cols] = self.crime[cols].replace(',', '', regex=True).astype(int)  # regex=True

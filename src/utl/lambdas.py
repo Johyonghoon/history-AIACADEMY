@@ -14,4 +14,3 @@ def MosaicLambda(*params):
         return (lambda x: x[:, :, 0] * 0.114 + x[:, :, 1] * 0.587 + x[:, :, 2] * 0.229)(target)
     elif cmd == 'IMAGE_FROM_ARRAY':
         return (lambda x: Image.fromarray(x))(target)
-    
