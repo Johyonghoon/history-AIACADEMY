@@ -1,21 +1,38 @@
+import { signupApi } from 'auth/api'
 import 'auth/styles/SignUp.css'
+import { useState } from 'react'
 
 const SignUp = () => {
+    const [inputs, setInputs] = useState({})
+    const {email, nickname, password} = inputs
+
+    const onChange = e => {
+        e.preventDefault()
+        const {value, name} = e.target
+        setInputs({...inputs, [name]: value})
+    }
+    const onClick = e => {
+        e.preventDefault()
+        const signuprequest = {email, nickname, password}
+        alert(`사용자 이름: ${JSON.stringify(signuprequest)}`)
+        signupApi(signuprequest)
+    }
+
     return (<>
     <h1>계정 생성</h1>
     <p>계정 생성을 위해 다음 양식을 입력해주세요.</p>
 
-    <label for="email"><b>Email</b></label><br/>
-    <input type="text" placeholder="이메일 입력" name="email" required/><br/><br/>
+    <b>Email</b>
+    <input type="text" placeholder="이메일" name="email" onChange={onChange}/><br/>
 
-    <label for="psw"><b>Password</b></label><br/>
-    <input type="password" placeholder="비밀번호 입력" name="psw" required/><br/><br/>
+    <b>nickname</b>
+    <input type="text" placeholder="닉네임" name="nickname" onChange={onChange}/><br/>
 
-    <label for="psw-repeat"><b>Repeat Password</b></label><br/>
-    <input type="password" placeholder="비밀번호 확인" name="psw-repeat" required/><br/><br/>
+    <b>Password</b>
+    <input type="password" placeholder="비밀번호" name="password" onChange={onChange}/><br/><br/>
     
     <button type="button">취소</button>
-    <button type="submit">회원가입</button>
+    <button onClick={onClick}>회원가입</button>
     </>)
 }
 

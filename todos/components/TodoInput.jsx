@@ -19,7 +19,7 @@ const TodoInput = () => {
     }
     const addTodo = todo => dispatch(addTodoAction(todo))
     
-    const handleChange = e => {
+    const onChange = e => {
         e.preventDefault()
         setTodo(e.target.value)
     }
@@ -33,7 +33,7 @@ const TodoInput = () => {
         name="fname"
         placeholder="할 일 입력" 
         value={todo}
-        onChange={handleChange} /><br/><br/>
+        onChange={onChange} /><br/><br/>
     </form> 
     </>)
 }
