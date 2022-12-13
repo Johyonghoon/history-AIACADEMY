@@ -67,7 +67,7 @@ class StrokeService:
         self.ratio_variables()
         self.norminal_variables()
         self.sampling()
-        # self.learning()
+        self.learning(flag="gini")
 
     '''
     1.스펙 보기
@@ -171,8 +171,8 @@ class StrokeService:
         print(f"y_train value counts normalization : \n{self.y_train.value_counts(normalize=True)}")
         print(f"y_train value counts : \n{self.y_train.value_counts()}")
 
-    def learning(self):  # 6
-        flag = "gini"
+    def learning(self, flag):  # 6
+        # flag = "gini"
         X_train = self.X_train
         y_train = self.y_train
         X_test = self.X_test
@@ -213,7 +213,7 @@ class StrokeService:
             for p in ax.patches:
                 ax.annotate("%.3f" % p.get_width(), (p.get_x() + p.get_width(), p.get_y()+1),
                             xytext=(5, 10), textcoords='offset points')
-            # plt.show()
+            plt.show()
 
 
 STROKE_MENUS = ["종료",  # 0
