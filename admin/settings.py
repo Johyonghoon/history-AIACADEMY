@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "blog",
     "movie",
     "shop",
+    "users",
     "rest_framework"
 ]
 

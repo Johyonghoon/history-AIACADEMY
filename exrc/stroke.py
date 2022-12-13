@@ -196,12 +196,12 @@ class StrokeService:
                 verbose=1  # 연산 중간 메시지 출력
             )
             grid_tree.fit(X_train, y_train)
-            # print(f"GridSearchCV Max Accuracy: {grid_tree.best_score_:.5f}")
-            # print(f"GridSearchCV Best Parameter: {grid_tree.best_params_}")
+            print(f"GridSearchCV Max Accuracy: {grid_tree.best_score_:.5f}")
+            print(f"GridSearchCV Best Parameter: {grid_tree.best_params_}")
             best_clf = grid_tree.best_estimator_
             pred = best_clf.predict(X_test)
-            # print(f"Accuracy on test set: {accuracy_score(y_test, pred):.5f}")
-            # print(f"Feature Importances: {best_clf.feature_importances_}")
+            print(f"Accuracy on test set: {accuracy_score(y_test, pred):.5f}")
+            print(f"Feature Importances: {best_clf.feature_importances_}")
             feature_names = list(self.data.columns)
             dft = pd.DataFrame(np.round(best_clf.feature_importances_, 4),
                                index=feature_names, columns=['Feature_importances'])
