@@ -213,7 +213,7 @@ class StrokeService:
             for p in ax.patches:
                 ax.annotate("%.3f" % p.get_width(), (p.get_x() + p.get_width(), p.get_y()+1),
                             xytext=(5, 10), textcoords='offset points')
-            plt.show()
+            # plt.show()
 
 
 STROKE_MENUS = ["종료",  # 0
