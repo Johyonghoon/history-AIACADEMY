@@ -2,13 +2,11 @@ import { Route, Routes } from "react-router-dom"
 import { Schedule } from "todos"
 import { Counter, Footer, Navigation, Navigation2 } from "common"
 import { LoginForm, SignUpForm } from "auth"
-import dog from 'images/dog.PNG'
-import fashion from 'images/fashion.png'
 import { StrokeResult } from "exrc"
+import IrisResult from "exrc/containers/IrisResult"
 
 
 const Home = () => {
-    const imageSize = {width: 300, height: 300}
     return (<>
     <table style={{ width: "600px", height: "600px", margin: "0 auto", border: "1px solid black"}}>
         <thead>
@@ -20,12 +18,6 @@ const Home = () => {
             </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>
-                <img src={dog} style={imageSize}/>
-                <img src={fashion}/>
-            </td>
-        </tr>
         <tr style={{ width: "20%", height: "80%",  border: "1px solid black"}}>
             <td style={{ width: "100%", border: "1px solid black"}}>
             <Routes>
@@ -34,6 +26,7 @@ const Home = () => {
                 <Route path="/signup" element={<SignUpForm/>}></Route>
                 <Route path="/login" element={<LoginForm/>}></Route>
                 <Route path="/stroke" element={<StrokeResult/>}></Route>
+                <Route path="/iris" element={<IrisResult/>}></Route>
             </Routes>
             </td>
         </tr>

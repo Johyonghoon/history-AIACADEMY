@@ -1,10 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { Link } from "react-router-dom"
 
 const Navigation2 = () => {
@@ -25,6 +21,7 @@ const Navigation2 = () => {
         <Link to="/signup" style={{width:60, margin:10}}>Sign UP</Link>
         <Link to="/login" style={{width:50, margin:10}}>Login</Link>
         <Link to="/stroke" style={{width:50, margin:10}}>Stroke</Link>
+        <Link to="/iris" style={{width:50, margin:10}}>Iris</Link>
       </BottomNavigation>
     </Box>
   );
