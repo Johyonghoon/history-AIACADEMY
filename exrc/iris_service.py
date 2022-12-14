@@ -1,22 +1,19 @@
-from keras import datasets
+import numpy as np
+from sklearn import datasets
 from keras.saving.save import load_model
-import tensorflow as tf
 
 
 class IrisService(object):
     def __init__(self):
-        model = load_model('./save/iris_model.h5')
-        graph = tf.get_default_graph()
+        global model, target_names
+        model = load_model(r"C:\Users\AIA\PycharmProjects\djangoProject\exrc\save\iris_model.h5")
         target_names = datasets.load_iris().target_names
 
-    def iris_hook(self):
-        self.service_model()
-
-    def service_model(self):
-        pass
-
-
-
+    def service_model(self, features):
+        features = np.reshape(features, (1, 4))
+        Y_prob = model.predict(features, verbose=0)
+        predicted = Y_prob.argmax(axis=-1)
+        return predicted[0]  # p-value 가장 높은 것
 
 
 IRIS_MENUS = ["종료",  # 0

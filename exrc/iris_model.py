@@ -6,16 +6,21 @@ from sklearn.preprocessing import OneHotEncoder
 
 class IrisModel(object):
     def __init__(self):
-        self.iris = datasets.load_iris()
-        self._X = self.iris.data
-        self._Y = self.iris.target
+        global iris, _X, _Y
+        iris = datasets.load_iris()
+        print(f'type {type(iris)}')  # type <class 'sklearn.utils._bunch.Bunch'>
+        _X = iris.data
+        _Y = iris.target
 
     def iris_hook(self):
         self.spec()
         # self.create_model()
 
     def spec(self):
-        print(f" --- feature name --- \n{self.iris.feature_names}")
+        print(f" --- feature name --- \n{iris.feature_names}\n"
+              f" --- target name --- \n{iris.target_names}\n"
+              f" --- data info --- \n{iris.DESCR}")
+
     """
     Shape (150, 6)    
      --- feature name --- 
