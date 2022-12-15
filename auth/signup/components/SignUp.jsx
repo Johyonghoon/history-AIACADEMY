@@ -1,5 +1,5 @@
-import { signupApi } from 'auth/api'
-import 'auth/styles/SignUp.css'
+import { signupApi } from 'auth/signup/api'
+import 'auth/signup/styles/SignUp.css'
 import { useState } from 'react'
 
 const SignUp = () => {

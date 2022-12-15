@@ -1,4 +1,4 @@
-import { stroke } from "exrc/api"
+import { stroke } from "exrc/stroke/api"
 
 const Stroke = () => {
     const onClick = e => {

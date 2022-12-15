@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom"
 import { Schedule } from "todos"
-import { Counter, Footer, Navigation, Navigation2 } from "common"
-import { LoginForm, SignUpForm } from "auth"
+import { Counter, Footer, Navigation } from "common"
+import { LoginContainer, SignUpContainer } from "auth"
 import { StrokeResult } from "exrc"
-import IrisResult from "exrc/containers/IrisResult"
+import IrisResult from "exrc/iris/containers/IrisContainer"
 
 
 const Home = () => {
@@ -13,7 +13,6 @@ const Home = () => {
             <tr columns="3" >
                 <td style={{ width: "100%", border: "1px solid black"}}>
                     <Navigation/>
-                    <Navigation2/>
                 </td>
             </tr>
         </thead>
@@ -21,11 +20,11 @@ const Home = () => {
         <tr style={{ width: "20%", height: "80%",  border: "1px solid black"}}>
             <td style={{ width: "100%", border: "1px solid black"}}>
             <Routes>
-                <Route path="/count" element={<Counter/>}></Route>
+                <Route path="/counter" element={<Counter/>}></Route>
                 <Route path="/todos" element={<Schedule/>}></Route>
-                <Route path="/signup" element={<SignUpForm/>}></Route>
-                <Route path="/login" element={<LoginForm/>}></Route>
-                <Route path="/stroke" element={<StrokeResult/>}></Route>
+                <Route path="/signup" element={<SignUpContainer/>}></Route>
+                <Route path="/login" element={<LoginContainer/>}></Route>
+                <Route path="/stroke" element={<strokeContainer/>}></Route>
                 <Route path="/iris" element={<IrisResult/>}></Route>
             </Routes>
             </td>

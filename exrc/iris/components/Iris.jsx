@@ -1,4 +1,4 @@
-import { iris } from "exrc/api"
+import { iris } from "exrc/iris/api/index"
 import { useState } from "react"
 
 const Iris = () => {

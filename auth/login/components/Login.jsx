@@ -1,6 +1,6 @@
-import 'auth/styles/Login.css'
+import 'auth/login/styles/Login.css'
 import { useState } from 'react'
-import { userLogin } from 'auth/api'
+import { userLogin } from 'auth/login/api'
 
 const Login = () => {
     const [inputs, setInputs] = useState({})

@@ -1,4 +1,5 @@
-export {default as SignUp} from './components/SignUp'
-export {default as Login} from './components/Login'
-export {default as LoginForm} from './containers/LoginForm'
-export {default as SignUpForm} from './containers/SignUpForm'
+export {default as Login} from './login/components/Login'
+export {default as LoginContainer} from './login/containers/LoginContainer'
+
+export {default as SignUp} from './signup/components/SignUp'
+export {default as SignUpContainer} from './signup/containers/SignUpContainer'
