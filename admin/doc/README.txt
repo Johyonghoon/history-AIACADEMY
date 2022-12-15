@@ -56,7 +56,7 @@ https://towardsdatascience.com/in-ai-the-objective-is-subjective-4614795d179b
    아웃라이어가 있으면 표준화 나머지는 정규화가 낫다.
 
 ## 학습(learning)
-   통계학에서  추정문제 해결과정(=추론)이다.
+   통계학에서 추정문제 해결과정(=추론)이다.
    learning 은 target 을 구하는 modeling 이다.
    - 지도 학습은 샘플을 사용한다.
    - 비지도 학습은 샘플을 사용하지 않는다.
@@ -125,7 +125,7 @@ https://towardsdatascience.com/in-ai-the-objective-is-subjective-4614795d179b
    엔트로피
    분류오류
 
-   ## 불순도란 다양한 범주들의 개체들이 얼마나 포함되었는가 정도이다.
+## 불순도란 다양한 범주들의 개체들이 얼마나 포함되었는가 정도이다.
    여러가지 클래스가 섞여있는 정도이다. 반대로 순수도(purity)는 같은 클래스끼리
    얼마나 많이 포함되어 있는지를 말한다.
    https://computer-science-student.tistory.com/60
