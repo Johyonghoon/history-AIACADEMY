@@ -28,7 +28,6 @@ const Iris = () => {
     return(<>
     <h1>IRIS</h1>
     <p>붓꽃의 품종을 찾기위한 꽃의 정보를 입력해주세요.</p>
-
     <input type="text" placeholder="꽃받침의 너비 입력(cm)" name="sepal_width" onChange={onChange}/>
     <input type="text" placeholder="꽃받침의 길이 입력(cm)" name="sepal_length" onChange={onChange}/>
     <input type="text" placeholder="꽃잎의 너비 입력(cm)" name="petal_width" onChange={onChange}/>

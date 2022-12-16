@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import { Link } from "react-router-dom"
 
-const Navigation2 = () => {
+const Navigation = () => {
   const [value, setValue] = React.useState(0);
 
   return (
@@ -22,9 +22,10 @@ const Navigation2 = () => {
         <Link to="/login" style={{width:50, margin:10}}>Login</Link>
         <Link to="/stroke" style={{width:50, margin:10}}>Stroke</Link>
         <Link to="/iris" style={{width:50, margin:10}}>Iris</Link>
+        <Link to="/fashion" style={{width:50, margin:10}}>Fashion</Link>
       </BottomNavigation>
     </Box>
   );
 }
 
-export default Navigation2
+export default Navigation

@@ -2,8 +2,7 @@ import { Route, Routes } from "react-router-dom"
 import { Schedule } from "todos"
 import { Counter, Footer, Navigation } from "common"
 import { LoginContainer, SignUpContainer } from "auth"
-import { StrokeResult } from "exrc"
-import IrisResult from "exrc/iris/containers/IrisContainer"
+import { FashionContainer, IrisContainer, StrokeContainer } from "exrc"
 
 
 const Home = () => {
@@ -24,8 +23,9 @@ const Home = () => {
                 <Route path="/todos" element={<Schedule/>}></Route>
                 <Route path="/signup" element={<SignUpContainer/>}></Route>
                 <Route path="/login" element={<LoginContainer/>}></Route>
-                <Route path="/stroke" element={<strokeContainer/>}></Route>
-                <Route path="/iris" element={<IrisResult/>}></Route>
+                <Route path="/stroke" element={<StrokeContainer/>}></Route>
+                <Route path="/iris" element={<IrisContainer/>}></Route>
+                <Route path="/fashion" element={<FashionContainer/>}></Route>
             </Routes>
             </td>
         </tr>
