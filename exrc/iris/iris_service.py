@@ -1,3 +1,5 @@
+import os
+
 import numpy as np
 from sklearn import datasets
 from keras.saving.save import load_model
@@ -6,7 +8,7 @@ from keras.saving.save import load_model
 class IrisService(object):
     def __init__(self):
         global model, target_names
-        model = load_model(r"C:\Users\AIA\PycharmProjects\djangoProject\exrc\save\iris_model.h5")
+        model = load_model(r"C:\Users\AIA\PycharmProjects\djangoProject\exrc\iris\save\iris_model.h5")
         target_names = datasets.load_iris().target_names
 
     def service_model(self, features):
@@ -35,4 +37,4 @@ if __name__ == '__main__':
             print("종료")
             break
         elif menu == '1':
-            (lambda x: x.iris_hook())(t)
+            (lambda x: x.service_model())(t)

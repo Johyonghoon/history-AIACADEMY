@@ -1,3 +1,5 @@
+import os
+
 from keras import Sequential
 from keras.layers import Dense
 from sklearn import datasets
@@ -13,8 +15,8 @@ class IrisModel(object):
         _Y = iris.target
 
     def iris_hook(self):
-        self.spec()
-        # self.create_model()
+        # self.spec()
+        self.create_model()
 
     def spec(self):
         print(f" --- feature name --- \n{iris.feature_names}\n"
@@ -28,8 +30,8 @@ class IrisModel(object):
     """
 
     def create_model(self):
-        X = self._X
-        Y = self._Y
+        X = _X
+        Y = _Y
         enc = OneHotEncoder()
         Y_1hot = enc.fit_transform(Y.reshape(-1, 1)).toarray()
         model = Sequential()
@@ -39,7 +41,7 @@ class IrisModel(object):
         model.fit(X, Y_1hot, epochs=300, batch_size=10)
         print('Model Training is completed')
 
-        file_name = './save/iris_model.h5'
+        file_name = os.path.join(os.path.abspath("save"), "iris_model.h5")
         model.save(file_name)
         print(f"Model Saved in {file_name}")
 

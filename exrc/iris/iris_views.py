@@ -3,17 +3,7 @@ from rest_framework.decorators import api_view, parser_classes
 from rest_framework.parsers import JSONParser
 import tensorflow as tf
 
-from exrc.iris_model import IrisModel
-from exrc.iris_service import IrisService
-from exrc.stroke import StrokeService
-
-
-@api_view(['GET'])
-@parser_classes([JSONParser])
-def stroke(request):
-    StrokeService().stroke_hook()
-    print(f'Enter Stroke with {request}')
-    return JsonResponse({'Response Test ': 'SUCCESS'})
+from exrc.iris.iris_service import IrisService
 
 
 @api_view(['POST'])
@@ -30,6 +20,7 @@ def iris(request):
           f"꽃잎의 길이: {petal_length}")
     iris_species = IrisService().service_model([sepal_width, sepal_length, petal_width, petal_length])
     print(f'찾는 품종: {iris_species}')
+    resp = None
     if iris_species == 0:
         resp = 'setosa / 부채붓꽃'
         print(resp)

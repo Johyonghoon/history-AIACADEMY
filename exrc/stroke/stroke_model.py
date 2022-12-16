@@ -143,13 +143,13 @@ class StrokeService:
 
         self.stroke = df
         print(" ### 프리프로세스 종료 ###")
-        self.stroke.to_csv(r"C:\Users\AIA\PycharmProjects\djangoProject\exrc\save\stroke.csv", index=False)
+        self.stroke.to_csv(r"C:\Users\AIA\PycharmProjects\djangoProject\exrc\stroke\save\stroke.csv", index=False)
 
     def ordinal_variables(self):   # 해당 컬럼 없음
         pass
 
     def sampling(self):  # 5
-        dframe = pd.read_csv(r"C:\Users\AIA\PycharmProjects\djangoProject\exrc\save\stroke.csv")
+        dframe = pd.read_csv(r"C:\Users\AIA\PycharmProjects\djangoProject\exrc\stroke\save\stroke.csv")
         print(dframe)
         self.data = dframe.drop(['뇌졸중'], axis=1)
         self.data = self.data.drop(['아이디'], axis=1)
