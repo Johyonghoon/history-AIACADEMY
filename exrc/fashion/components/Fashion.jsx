@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { fashion, getfashion, postfashion } from "../api"
+import { fashion } from "../api"
 
 const Fashion = () => {
     const [inputs, setInputs] = useState({})
@@ -13,7 +13,7 @@ const Fashion = () => {
     const postOnClick = e => {
         e.preventDefault()
         alert(`사용자 이름: ${JSON.stringify(test_num)}`)
-        postfashion(test_num)
+        fashion(test_num)
         .then((res)=>{
             alert(`옷의 카테고리 : ${JSON.stringify(res.data.result)}`)
         })
@@ -25,7 +25,7 @@ const Fashion = () => {
     const getOnClick = e => {
         e.preventDefault()
         alert(`사용자 이름: ${JSON.stringify(test_num)}`)
-        getfashion(test_num)
+        fashion(test_num)
         .then((res)=>{
             alert(`옷의 카테고리 : ${JSON.stringify(res.data.result)}`)
         })
