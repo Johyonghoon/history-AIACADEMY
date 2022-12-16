@@ -1,5 +1,18 @@
 ## 가설(hypothesis)
    p-value (확률값)
+   귀무 가설(null hypothesis)이 맞다는 전제 하에,
+   표본에서 실제로 관측된 통계치와 '같거나 더 극단적인' 통계치가 관측될 확률이다.
+
+   ** 귀무 가설(歸無假說, 영어: null hypothesis, 기호 H0) 또는 영 가설(零假說)
+      통계학에서 처음부터 버릴 것을 예상하는 가설이다.
+      차이가 없거나 의미있는 차이가 없는 경우의 가설이며
+      이것이 맞거나 맞지 않다는 통계학적 증거를 통해 증명하려는 가설이다.
+      예를 들어 범죄 사건에서 용의자가 있을 때
+      형사는 이 용의자가 범죄를 저질렀다는 추정인 대립가설을 세우게 된다.
+      이때 귀무가설은 용의자는 무죄라는 가설이다.
+      통계적인 방법으로 가설검정(hypothesis test)을 시도할 때 쓰인다.
+      로널드 피셔가 1966년에 정의하였다
+
 
 기술통계(=데이터 분석) - 추론통계(=학습, learning)
 
@@ -116,6 +129,11 @@ https://towardsdatascience.com/in-ai-the-objective-is-subjective-4614795d179b
    다만 이렇게 train, test 두개로만 분리하는 것은 기초적인 수준이고,
    보통 현업에서 모델을 만들 때는 train, test, validation set 세개로 나눈다.
 
+validation dataset is a sample of data held back from training your model that is used to give an estimate of model skill while tuning model’s hyperparameters.
+The validation dataset is different from the test dataset that is also held back from the training of the model, but is instead used to give an unbiased estimate of the skill of the final tuned model when comparing or selecting between final models.
+There is much confusion in applied machine learning about what a validation dataset is exactly and how it differs from a test dataset.
+
+
 ## 기계학습의 관점에서 보았을때 Ground-truth는 학습하고자 하는 데이터의 원본 혹은 실제 값을 표현할때 사용됩니다
    https://eair.tistory.com/16
 
@@ -149,3 +167,30 @@ https://towardsdatascience.com/in-ai-the-objective-is-subjective-4614795d179b
    - 스칼라 곱 - Scalar Multiple
    - 행렬 곱 - Matrix Multiplication
    - 행렬의 전치 - The transpose of a matrix
+
+## 분포
+   이산확률변수가 따르는 확률분포인 이산확률분포 중,
+   대표적인 분포인 베르누이분포(Bernoulli Distribution)와 이항분포(Binomial Distribution)에
+   시행의 결과가 성공이면 1의 값을 갖고, 실패이면 0의 값을 갖는 확률변수 X를
+   베르누이(Bernoulli) 확률변수라고 하고, 그 분포를 베르누이 분포라고 합니다.
+   그리고 이렇게 두 가지의 결과만을 갖는 시행을 베르누이 시행이라고 합니다.
+   성공일 확률은 p, 실패일 확률은 1-p = q가 되겠습니다.
+   만약 베르누이 시행을 여러 번 하면 어떻게 될까요?
+   예를 들어 동전 던지기도, 한번만 하고 끝내는 것이 아니라 5번을 던져서 그중 성공(앞면이라고 가정하죠)이 3번 나올 확률을 계산해볼 수도 있지 않을까요?
+   이때 사용하는 확률분포를 이항분포라고 합니다.
+   - 베르누이분포 : X ~ B(1,p)      (1번 만의 베르누이 시행의 성공 확률분포)
+   - 이항분포    : X ~ B(n,p)      (n번 베르누이 시행의 성공 확률분포)
+
+## 선형회귀(Linear Regression)을 코드로 구현한다.
+   핵심키워드: 선형회귀(Linear Regression) 가설(Hypothesis) 비용함수(Cost function)
+
+## 집계 함수
+   입력이 여러개의 로우이고, 출력이 하나인 결과인 것을 말합니다.
+   테이블의 전체 로우 수를 구하는
+   count , 평균( avg ), 총합( sum ), 최대값( max ), 최소값( min ) 등등이
+   이런 함수들 입니다.
+
+## 추론과 예측
+   https://gentlej90.tistory.com/19
+   https://koreapy.tistory.com/1108
+   추론과 예측의 차이는 답이 라벨인가, 그라운드트루스 인가이다.
