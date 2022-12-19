@@ -7,7 +7,7 @@ const Navigation = () => {
   const [value, setValue] = React.useState(0);
 
   return (
-    <Box sx={{ width: 500 }}>
+    <Box sx={{ width: 800 }}>
       <BottomNavigation
         showLabels
         value={value}
@@ -23,6 +23,7 @@ const Navigation = () => {
         <Link to="/stroke" style={{width:50, margin:10}}>Stroke</Link>
         <Link to="/iris" style={{width:50, margin:10}}>Iris</Link>
         <Link to="/fashion" style={{width:50, margin:10}}>Fashion</Link>
+        <Link to="/mnist" style={{width:50, margin:10}}>MNIST</Link>
       </BottomNavigation>
     </Box>
   );

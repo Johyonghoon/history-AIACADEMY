@@ -1,8 +1,17 @@
+export {default as Login} from './auth/login/components/Login'
+export {default as LoginContainer} from './auth/login/containers/LoginContainer'
+
+export {default as SignUp} from './auth/signup/components/SignUp'
+export {default as SignUpContainer} from './auth/signup/containers/SignUpContainer'
+
 export {default as Stroke} from 'exrc/stroke/components/Stroke'
 export {default as StrokeContainer} from 'exrc/stroke/containers/StrokeContainer'
 
-export {default as Iris} from 'exrc/iris/components/Iris'
-export {default as IrisContainer} from 'exrc/iris/containers/IrisContainer'
+export {default as Iris} from 'exrc/dlearn/iris/components/Iris'
+export {default as IrisContainer} from 'exrc/dlearn/iris/containers/IrisContainer'
 
-export {default as Fashion} from 'exrc/fashion/components/Fashion'
-export {default as FashionContainer} from 'exrc/fashion/containers/FashionContainer'
+export {default as Fashion} from 'exrc/dlearn/fashion/components/Fashion'
+export {default as FashionContainer} from 'exrc/dlearn/fashion/containers/FashionContainer'
+
+export {default as Mnist} from 'exrc/dlearn/mnist/components/Mnist'
+export {default as MnistContainer} from 'exrc/dlearn/mnist/containers/MnistContainer'
