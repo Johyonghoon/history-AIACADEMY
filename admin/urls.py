@@ -19,8 +19,10 @@ from admin.views import hello
 
 urlpatterns = [
     path("", hello),
-    path("exrc/", include('exrc.auth.login.urls')),
-    path("exrc/", include('exrc.stroke.urls')),
-    path("exrc/", include('exrc.iris.urls')),
-    path("exrc/", include('exrc.fashion.urls')),
+    path("exrc/auth/", include('exrc.auth.login.url')),
+    path("exrc/auth/", include('exrc.auth.signup.url')),
+    path("exrc/", include('exrc.stroke.url')),
+    path("exrc/dlearn/", include('exrc.dlearn.iris.url')),
+    path("exrc/dlearn/", include('exrc.dlearn.fashion.url')),
+    path("exrc/dlearn/", include('exrc.dlearn.mnist.url'))
 ]
