@@ -24,5 +24,6 @@ urlpatterns = [
     path("exrc/", include('exrc.stroke.url')),
     path("exrc/dlearn/", include('exrc.dlearn.iris.url')),
     path("exrc/dlearn/", include('exrc.dlearn.fashion.url')),
-    path("exrc/dlearn/", include('exrc.dlearn.mnist.url'))
+    path("exrc/dlearn/", include('exrc.dlearn.mnist.url')),
+    path("exrc/", include('exrc.webcrawler.url')),
 ]
