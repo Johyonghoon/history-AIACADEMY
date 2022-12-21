@@ -8,7 +8,7 @@ const NaverMovie = () => {
         webcrawlerService.naverMovie().then(res => {
             const json = JSON.parse(res)
             const arr = json['result']
-            for(let i=0; i<arr.length; i++) console.log(arr[i])
+            //for(let i=0; i<arr.length; i++) console.log(arr[i])
             setMovies(arr)
             console.log("arr.length: "+arr.length)
         })
@@ -27,9 +27,11 @@ const NaverMovie = () => {
             </tr>
         </thead>
         <tbody>
-            <tr><td>a</td><td>b</td></tr>
-            {movies && movies.map((movie, index) =>{
-                <tr key={index}><td>{movie.rank}</td><td>{movie.title}</td></tr>
+            
+            {movies && [1,2,3].map((movie, i) =>{
+                //console.log(movie)
+                <tr ><td>{movie}</td><td>{i}</td></tr>
+               
             })}
         </tbody>
     </table>
