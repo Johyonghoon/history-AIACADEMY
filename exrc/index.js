@@ -15,3 +15,6 @@ export {default as FashionContainer} from 'exrc/dlearn/fashion/containers/Fashio
 
 export {default as Mnist} from 'exrc/dlearn/mnist/components/Mnist'
 export {default as MnistContainer} from 'exrc/dlearn/mnist/containers/MnistContainer'
+
+export {default as NaverMovie} from 'exrc/webcrawler/components/NaverMovie'
+export {default as WebCrawlerContainer} from 'exrc/webcrawler/containers/WebCrawlerContainer'
