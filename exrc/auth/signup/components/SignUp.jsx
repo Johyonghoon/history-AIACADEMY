@@ -1,48 +1,16 @@
-
-import '../styles/SignUp.css'
-import { useState } from 'react'
-import { apiSignUp } from '../api'
-
+import signupService from "../api"
 const SignUp = () => {
-    const [inputs, setInputs] = useState({})
-    const {email, nickname, password} = inputs
-
-    const onChange = e => {
-        e.preventDefault()
-        const {value, name} = e.target
-        setInputs({...inputs, [name]: value})
-    }
     const onClick = e => {
         e.preventDefault()
-        const signuprequest = {email, nickname, password}
-        alert(`사용자 이름: ${JSON.stringify(signuprequest)}`)
-        apiSignUp(signuprequest)
-        .then((res)=>{
-            console.log(`response is ${res.config.data}`)
-            localStorage.setItem('token', JSON.stringify(res.config.data))
-        })
-        .catch((err) => {
-            console.log(err)
-            alert('이메일과 비밀번호를 다시 입력해주세요.')
-        })
+        signupService.apiSignUp()
+        let arr = document.getElementsByClassName('box')
+        for(let i=0; i<arr.length; i++) arr[i].value = ""
     }
 
     return (<>
-    <h1>계정 생성</h1>
-    <p>계정 생성을 위해 다음 양식을 입력해주세요.</p>
-
-    <b>Email</b>
-    <input type="text" placeholder="이메일" name="email" onChange={onChange}/><br/>
-
-    <b>nickname</b>
-    <input type="text" placeholder="닉네임" name="nickname" onChange={onChange}/><br/>
-
-    <b>Password</b>
-    <input type="password" placeholder="비밀번호" name="password" onChange={onChange}/><br/><br/>
-    
-    <button type="button">취소</button>
-    <button onClick={onClick}>회원가입</button>
+    <h2>회원가입</h2>
+    <button onClick={onClick}>사용자 등록</button>
+    <p>버튼을 클릭하시면, 더미 사용자 100명이 등록됩니다.</p>
     </>)
 }
-
 export default SignUp

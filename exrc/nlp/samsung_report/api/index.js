@@ -1,6 +1,6 @@
 const server = `http://localhost:8000`
-const signupService = {
-    apiSignUp
+const nlpService = {
+    samsungReport
 }
 function handleResponse(response){ 
     return response.text()
@@ -17,14 +17,14 @@ function handleResponse(response){
             return data
         })
 }
-async function apiSignUp(){
-    const res = await fetch(`${server}/exrc/auth/signup`)
+async function samsungReport(){
+    const res = await fetch(`${server}/exrc/nlp/samsung-report`)
     .then(handleResponse)
     .then(data => JSON.stringify(data))
     .catch((error) => {
         alert('error :::: '+error);
     });
-    alert('더미 사용자 생성 ::: '+res)
+    alert('레포트 분석 ::: '+res)
     return Promise.resolve(res);
 }
-export default signupService
+export default nlpService
