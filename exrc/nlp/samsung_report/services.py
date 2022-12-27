@@ -1,6 +1,6 @@
 import nltk
 
-from admin.path import samsung_report
+from api.path import samsung_report
 from exrc.nlp.samsung_report.models import Entity, Service
 
 

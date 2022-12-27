@@ -4,11 +4,13 @@ import numpy as np
 from sklearn import datasets
 from keras.saving.save import load_model
 
+from api.path import iris
+
 
 class IrisService(object):
     def __init__(self):
         global model, target_names
-        model = load_model(r"C:\Users\AIA\PycharmProjects\djangoProject\exrc\dlearn\iris\save\iris_model.h5")
+        model = load_model(f"{iris}\\save\\iris_model.h5")
         target_names = datasets.load_iris().target_names
 
     def service_model(self, features):

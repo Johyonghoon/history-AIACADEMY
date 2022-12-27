@@ -2,6 +2,8 @@ from dataclasses import dataclass
 
 import pandas as pd
 
+from api.path import naver_movie
+
 """
 지원하는 Parser 종류
 "html.parser" : 빠르지만 유연하지 않기 때문에 단순한 HTML문서에 사용합니다.
@@ -32,4 +34,4 @@ class ScrapModel:
 
     def dataframe_to_scv(self):
         path = 'save/result_bugsmusic.csv'
-        self.df.to_csv(r"C:\Users\AIA\PycharmProjects\djangoProject\exrc\webcrawler\save\crawling_data.csv")
+        self.df.to_csv(f"{naver_movie}\\save\\crawling_data.csv")

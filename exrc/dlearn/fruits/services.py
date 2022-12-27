@@ -6,7 +6,7 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 
 from keras.callbacks import ModelCheckpoint
-from admin.path import fruits
+from api.path import fruits
 
 # TF_CPP_MIN_LOG_LEVEL Default Setting 관련 경고 임시 조치
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
@@ -158,7 +158,7 @@ class FruitsService:
         plt.title('Training and Validation Loss')
         plt.show()
 
-        model.load_weights('CNNClassifier.h5')
+        model.load_weights(f'{fruits}\\save\\CNNClassifier.h5')
 
         test_loss, test_acc = model.evaluate(test_ds)
 

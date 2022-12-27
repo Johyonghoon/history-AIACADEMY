@@ -6,6 +6,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
+from api.path import webcrawler, imdb
 from exrc.nlp.imdb.models import Imdb_model
 
 
@@ -22,9 +23,9 @@ class NaverMovieService(object):
     def __init__(self):
         global url, chrome_driver, driver, savepath, character_set
         url = 'https://movie.naver.com/movie/point/af/list.naver?&page='
-        chrome_driver = r'C:\Users\AIA\PycharmProjects\djangoProject\exrc\webcrawler\chromedriver.exe'
+        chrome_driver = f'{webcrawler}\chromedriver.exe'
         driver = webdriver.Chrome(chrome_driver)
-        savepath = './naver_movie_review_corpus.csv'
+        savepath = f'{imdb}/naver_movie_review_corpus.csv'
         character_set = "UTF-8"
 
     def crawling(self):

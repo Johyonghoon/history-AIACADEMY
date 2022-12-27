@@ -4,6 +4,8 @@ import numpy as np
 from matplotlib import pyplot as plt
 from keras.saving.save import load_model
 
+from api.path import mnist
+
 
 class MnistService:
     def __init__(self):
@@ -12,7 +14,7 @@ class MnistService:
                        'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
 
     def service_model(self, test_num) -> []:
-        model = load_model(r"C:\Users\AIA\PycharmProjects\djangoProject\exrc\dlearn\mnist\save\mnist_model.h5")
+        model = load_model(f"{mnist}\\save\\mnist_model.h5")
         (train_images, train_labels), (test_images, test_labels) = keras.datasets.fashion_mnist.load_data()
         predictions = model.predict(test_images)
         i = test_num

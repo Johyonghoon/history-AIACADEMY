@@ -4,6 +4,8 @@ import numpy as np
 from matplotlib import pyplot as plt
 from keras.saving.save import load_model
 
+from api.path import fashion
+
 
 class FashionService(object):
     def __init__(self):
@@ -13,7 +15,7 @@ class FashionService(object):
 
     def service_model(self, test_num) -> []:
         # os.path.join(os.path.abspath("save"), "fashion_model.h5")
-        model = load_model(r"C:\Users\AIA\PycharmProjects\djangoProject\exrc\dlearn\fashion\save\fashion_model.h5")
+        model = load_model(f"{fashion}\\save\\fashion_model.h5")
         (train_images, train_labels), (test_images, test_labels) = keras.datasets.fashion_mnist.load_data()
         predictions = model.predict(test_images)
         i = test_num

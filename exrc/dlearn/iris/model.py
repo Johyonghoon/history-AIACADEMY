@@ -5,23 +5,25 @@ from keras.layers import Dense
 from sklearn import datasets
 from sklearn.preprocessing import OneHotEncoder
 
+from api.path import iris
+
 
 class IrisModel(object):
     def __init__(self):
-        global iris, _X, _Y
-        iris = datasets.load_iris()
-        print(f'type {type(iris)}')  # type <class 'sklearn.utils._bunch.Bunch'>
-        _X = iris.data
-        _Y = iris.target
+        global iris_set, _X, _Y
+        iris_set = datasets.load_iris()
+        print(f'type {type(iris_set)}')  # type <class 'sklearn.utils._bunch.Bunch'>
+        _X = iris_set.data
+        _Y = iris_set.target
 
     def iris_hook(self):
         # self.spec()
         self.create_model()
 
     def spec(self):
-        print(f" --- feature name --- \n{iris.feature_names}\n"
-              f" --- target name --- \n{iris.target_names}\n"
-              f" --- data info --- \n{iris.DESCR}")
+        print(f" --- feature name --- \n{iris_set.feature_names}\n"
+              f" --- target name --- \n{iris_set.target_names}\n"
+              f" --- data info --- \n{iris_set.DESCR}")
 
     """
     Shape (150, 6)    
@@ -41,12 +43,9 @@ class IrisModel(object):
         model.fit(X, Y_1hot, epochs=300, batch_size=10)
         print('Model Training is completed')
 
-        file_name = r"C:\Users\AIA\PycharmProjects\djangoProject\exrc\dlearn\iris\save\iris_model.h5"
+        file_name = f"{iris}\\save\\iris_model.h5"
         model.save(file_name)
         print(f"Model Saved in {file_name}")
-
-
-
 
 
 IRIS_MENUS = ["종료",  # 0

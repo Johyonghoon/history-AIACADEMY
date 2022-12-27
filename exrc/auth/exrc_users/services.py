@@ -3,6 +3,7 @@ import random
 import pandas as pd
 from sqlalchemy import create_engine
 
+from api.path import exrc_users
 from exrc.algorithms.lambdas import lambda_number, lambda_k_name, lambda_string, lambda_phone, lambda_birth, \
     address_list, job_list, interests_list
 
@@ -14,7 +15,7 @@ class UsersService:
         email = None
         nickname = None
         passwd = None
-        wordlist = r"C:\Users\AIA\PycharmProjects\djangoProject\exrc\auth\exrc_users\data\wordlist.txt"
+        wordlist = f"{exrc_users}\\data\\wordlist.txt"
 
     def create_acc_hook(self):
         hunnit_acc = self.create_hunnit_acc_in_df()

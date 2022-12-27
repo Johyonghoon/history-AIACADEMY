@@ -1,10 +1,12 @@
 import tensorflow as tf
 
+from api.path import mnist
+
 
 class MnistModel:
     def __init__(self):
-        global mnist, x_train, y_train, x_test, y_test
-        mnist = tf.keras.datasets.mnist
+        global mnist_set, x_train, y_train, x_test, y_test
+        mnist_set = tf.keras.datasets.mnist
         (x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
         x_train, x_test = x_train / 255.0, x_test / 255.0
 
@@ -14,7 +16,6 @@ class MnistModel:
             tf.keras.layers.Dense(512, activation=tf.nn.relu),
             tf.keras.layers.Dense(10, activation=tf.nn.softmax)
         ])
-        print(model)
         # print(f" --- feature name --- \n{model.summary()}")
         model.compile(optimizer='adam',
                       loss='sparse_categorical_crossentropy',
@@ -23,7 +24,7 @@ class MnistModel:
         test_loss, test_acc = model.evaluate(x_test, y_test)
         print('테스트 정확도:', test_acc)
 
-        file_name = r"C:\Users\AIA\PycharmProjects\djangoProject\exrc\dlearn\mnist\save\mnist_model.h5"
+        file_name = f"{mnist}\\save\\mnist_model.h5"
         model.save(file_name)
 
 

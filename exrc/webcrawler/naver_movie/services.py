@@ -7,7 +7,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
-from admin.path import webcrawler
+from api.path import webcrawler, naver_movie
 from exrc.webcrawler.naver_movie.models import ScrapModel
 
 
@@ -16,7 +16,7 @@ class ScrapService:
     def __init__(self):
         global driverpath, naver_url, savepath, character_set
         driverpath = f"{webcrawler}\\chromedriver"
-        savepath = f"{webcrawler}\\naver_movie\\save\\movie_scrap.csv"
+        savepath = f"{naver_movie}\\save\\movie_scrap.csv"
         naver_url = "https://movie.naver.com/movie/sdb/rank/rmovie.naver"
         character_set = "UTF-8"
 

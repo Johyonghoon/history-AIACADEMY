@@ -5,6 +5,8 @@ from keras import Sequential
 from keras.layers import Dense
 from matplotlib import pyplot as plt
 
+from api.path import fashion
+
 
 class FashionModel(object):
 
@@ -27,7 +29,7 @@ class FashionModel(object):
         model.fit(train_images, train_labels, epochs=5)
         test_loss, test_acc = model.evaluate(test_images, test_labels)
         print(f"Test Accuracy is {test_acc}")
-        file_name = r"C:\Users\AIA\PycharmProjects\djangoProject\exrc\dlearn\fashion\save\fashion_model.h5"
+        file_name = f"{fashion}\\save\\fashion_model.h5"
         model.save(file_name)
 
 
