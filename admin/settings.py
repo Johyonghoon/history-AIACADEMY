@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "exrc.auth.exrc_users.apps.ExrcUsersConfig",
+    "exrc.auth.exrc_posts.apps.ExrcPostsConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

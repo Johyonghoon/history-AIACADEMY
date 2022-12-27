@@ -1,15 +1,15 @@
 import numpy as np
 import pandas as pd
+from imblearn.under_sampling import RandomUnderSampler
 from matplotlib import pyplot as plt, font_manager, rc
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.preprocessing import OrdinalEncoder
-from imblearn.under_sampling import RandomUnderSampler
 from sklearn.tree import DecisionTreeClassifier
 import seaborn as sns
-font_path = "C:/Windows/Fonts/malgunbd.ttf"
-font = font_manager.FontProperties(fname=font_path).get_name()
-rc('font', family=font)
+# font_path = "C:/Windows/Fonts/malgunbd.ttf"
+# font = font_manager.FontProperties(fname="").get_name()
+# rc('font', family=font)
 
 
 stroke_meta = {'id': '아이디',

@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('blog_users', '0001_initial'),
-        ('posts', '0001_initial'),
+        ('exrc_posts', '0001_initial'),
     ]
 
     operations = [
@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(primary_key=True, serialize=False)),
                 ('ip_address', models.CharField(max_length=15)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('post_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='posts.post')),
+                ('post_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='exrc_posts.post')),
                 ('user_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog_users.bloguser')),
             ],
             options={

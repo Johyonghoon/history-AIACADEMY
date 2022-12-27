@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('posts', '0001_initial'),
+        ('exrc_posts', '0001_initial'),
     ]
 
     operations = [
@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
                 ('title', models.CharField(max_length=255)),
-                ('posts', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='posts.post')),
+                ('exrc_posts', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='exrc_posts.post')),
             ],
             options={
                 'db_table': 'blog_tags',
