@@ -1,6 +1,8 @@
+import os
+
 import tensorflow as tf
 
-from api.path import mnist
+from api.path import dir_path
 
 
 class MnistModel:
@@ -24,7 +26,7 @@ class MnistModel:
         test_loss, test_acc = model.evaluate(x_test, y_test)
         print('테스트 정확도:', test_acc)
 
-        file_name = f"{mnist}\\save\\mnist_model.h5"
+        file_name = os.path.join(dir_path("mnist"), "save", "mnist_model.h5")
         model.save(file_name)
 
 

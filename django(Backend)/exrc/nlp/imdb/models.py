@@ -1,6 +1,5 @@
 import numpy as np
 import tensorflow as tf
-from keras import Sequential
 from keras.datasets import imdb
 from keras.utils import pad_sequences
 from sklearn.model_selection import train_test_split

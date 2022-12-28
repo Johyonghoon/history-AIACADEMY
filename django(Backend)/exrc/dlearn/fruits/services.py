@@ -6,7 +6,8 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 
 from keras.callbacks import ModelCheckpoint
-from api.path import fruits
+
+from api.path import dir_path
 
 # TF_CPP_MIN_LOG_LEVEL Default Setting 관련 경고 임시 조치
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
@@ -24,20 +25,20 @@ class FruitsService:
             batch_size, img_height, img_width, class_names, \
             modelpath
 
-        trainpath = f"{fruits}\\fruits-360-5\\Training"
-        testpath = f"{fruits}\\fruits-360-5\\Test"
+        trainpath = os.path.join(dir_path("fruits"), "save", "fruits", "Training")
+        testpath = os.path.join(dir_path("fruits"), "save", "fruits", "Test")
 
-        Apple_Braeburn_train = f"{trainpath}\\Apple Braeburn"
-        Apple_Crimson_Snow_train = f"{trainpath}\\Apple Crimson Snow"
-        Apple_Golden_1_train = f"{trainpath}\\Apple Golden 1"
-        Apple_Golden_2_train = f"{trainpath}\\Apple Golden 2"
-        Apple_Golden_3_train = f"{trainpath}\\Apple Golden 3"
+        Apple_Braeburn_train = os.path.join(trainpath, "Apple Braeburn")
+        Apple_Crimson_Snow_train = os.path.join(trainpath, "Apple Crimson Snow")
+        Apple_Golden_1_train = os.path.join(trainpath, "Apple Golden 1")
+        Apple_Golden_2_train = os.path.join(trainpath, "Apple Golden 2")
+        Apple_Golden_3_train = os.path.join(trainpath, "Apple Golden 3")
 
-        Apple_Braeburn_test = f"{testpath}\\Apple Braeburn"
-        Apple_Crimson_Snow_test = f"{testpath}\\Apple Crimson Snow"
-        Apple_Golden_1_test = f"{testpath}\\Apple Golden 1"
-        Apple_Golden_2_test = f"{testpath}\\Apple Golden 2"
-        Apple_Golden_3_test = f"{testpath}\\Apple Golden 3"
+        Apple_Braeburn_test = os.path.join(testpath, "Apple Braeburn")
+        Apple_Crimson_Snow_test = os.path.join(testpath, "Apple Crimson Snow")
+        Apple_Golden_1_test = os.path.join(testpath, "Apple Golden 1")
+        Apple_Golden_2_test = os.path.join(testpath, "Apple Golden 2")
+        Apple_Golden_3_test = os.path.join(testpath, "Apple Golden 3")
 
         batch_size = 32
         img_height = 100
@@ -50,7 +51,7 @@ class FruitsService:
 
         class_names = ['Apple Braeburn', 'Apple Crimson Snow', 'Apple Golden 1', 'Apple Golden 2', 'Apple Golden 3']
 
-        modelpath = f"{fruits}\\save\\fruits_model.h5"
+        modelpath = os.path.join(dir_path("fruits"), "save", "fruits_model.h5")
 
     def fruits_hook(self):
         self.create_model()
@@ -123,7 +124,8 @@ class FruitsService:
             optimizer='adam',
             loss=tf.losses.SparseCategoricalCrossentropy(),
             metrics=['accuracy'])
-        checkpointer = ModelCheckpoint(f'{fruits}\\save\\CNNClassifier.h5', save_best_only=True)
+        checkpointer = ModelCheckpoint(
+            os.path.join(dir_path("fruits"), "save", "CNNClassifier.h5"), save_best_only=True)
         early_stopping_cb = keras.callbacks.EarlyStopping(patience=5, monitor='val_accuracy',
                                                           restore_best_weights=True)
         epochs = 20
@@ -158,7 +160,7 @@ class FruitsService:
         plt.title('Training and Validation Loss')
         plt.show()
 
-        model.load_weights(f'{fruits}\\save\\CNNClassifier.h5')
+        model.load_weights(os.path.join(dir_path("fruits"), "save", "CNNClassifier.h5"))
 
         test_loss, test_acc = model.evaluate(test_ds)
 

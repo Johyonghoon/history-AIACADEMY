@@ -1,6 +1,8 @@
+import os
+
 import nltk
 
-from api.path import samsung_report
+from api.path import dir_path
 from exrc.nlp.samsung_report.models import Entity, Service
 
 
@@ -15,7 +17,7 @@ class Controller:
     def data_analysis(self):
         self.download_dictionary()
         self.entity.fname = 'kr-Report_2018.txt'
-        self.entity.context = f"{samsung_report}\\data\\"
+        self.entity.context = os.path.join(dir_path("samsung_report"), "data\\")
         self.service.extract_tokens(self.entity)
         self.service.extract_hangeul()
         self.service.conversion_token()

@@ -1,8 +1,9 @@
+import os
 from dataclasses import dataclass
 
 import pandas as pd
 
-from api.path import naver_movie
+from api.path import dir_path
 
 """
 지원하는 Parser 종류
@@ -34,4 +35,4 @@ class ScrapModel:
 
     def dataframe_to_scv(self):
         path = 'save/result_bugsmusic.csv'
-        self.df.to_csv(f"{naver_movie}\\save\\crawling_data.csv")
+        self.df.to_csv(os.path.join(dir_path("naver_movie"), "save", "crawling_data.csv"))

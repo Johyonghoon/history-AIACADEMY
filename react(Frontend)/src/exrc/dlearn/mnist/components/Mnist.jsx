@@ -23,8 +23,8 @@ const Mnist = () => {
         for(let i=0; i<arr.length; i++) arr[i].value = ""
     }
     return(<>
-    <h1>FASHION</h1>
-    <p>카테고리를 알고 싶은 옷의 번호를 입력해주세요.</p>
+    <h1>MNIST</h1>
+    <p>알고 싶은 숫자 필기체의 번호를 입력해주세요.</p>
     <input type="text" className="box" placeholder="테스트 번호(찾고자 하는 숫자가 아님)" name="test_num" onChange={onChange}/>
     
     <form method="get">

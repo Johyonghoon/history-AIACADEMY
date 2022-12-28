@@ -1,3 +1,5 @@
+import os
+
 import numpy as np
 import pandas as pd
 from imblearn.under_sampling import RandomUnderSampler
@@ -8,7 +10,7 @@ from sklearn.preprocessing import OrdinalEncoder
 from sklearn.tree import DecisionTreeClassifier
 import seaborn as sns
 
-from api.path import stroke
+from api.path import dir_path
 
 # font_path = "C:/Windows/Fonts/malgunbd.ttf"
 # font = font_manager.FontProperties(fname="").get_name()
@@ -54,7 +56,7 @@ None
 
 class StrokeService:
     def __init__(self):
-        self.stroke = pd.read_csv(f"{stroke}\\data\\healthcare-dataset-stroke-data.csv")
+        self.stroke = pd.read_csv(os.path.join(dir_path("stroke"), "data", "healthcare-dataset-stroke-data.csv"))
         self.my_stroke = None
         self.adult_stroke = None
         self.X_train = None
@@ -146,13 +148,13 @@ class StrokeService:
 
         self.stroke = df
         print(" ### 프리프로세스 종료 ###")
-        self.stroke.to_csv(f"{stroke}\\save\\stroke.csv", index=False)
+        self.stroke.to_csv(os.path.join(dir_path("stroke"), "save", "stroke.csv"), index=False)
 
     def ordinal_variables(self):   # 해당 컬럼 없음
         pass
 
     def sampling(self):  # 5
-        dframe = pd.read_csv(f"{stroke}\\save\\stroke.csv")
+        dframe = pd.read_csv(os.path.join(dir_path("stroke"), "save", "stroke.csv"))
         print(dframe)
         self.data = dframe.drop(['뇌졸중'], axis=1)
         self.data = self.data.drop(['아이디'], axis=1)

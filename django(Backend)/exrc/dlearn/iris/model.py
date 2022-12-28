@@ -5,7 +5,7 @@ from keras.layers import Dense
 from sklearn import datasets
 from sklearn.preprocessing import OneHotEncoder
 
-from api.path import iris
+from api.path import dir_path
 
 
 class IrisModel(object):
@@ -43,7 +43,7 @@ class IrisModel(object):
         model.fit(X, Y_1hot, epochs=300, batch_size=10)
         print('Model Training is completed')
 
-        file_name = f"{iris}\\save\\iris_model.h5"
+        file_name = os.path.join(dir_path("iris"), "save", "iris_model.h5")
         model.save(file_name)
         print(f"Model Saved in {file_name}")
 

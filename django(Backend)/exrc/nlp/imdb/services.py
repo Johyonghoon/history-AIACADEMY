@@ -1,4 +1,5 @@
 import csv
+import os
 import time
 from collections import defaultdict
 from math import log, exp
@@ -9,7 +10,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
-from api.path import webcrawler, imdb
+from api.path import dir_path
 from exrc.nlp.imdb.models import Imdb_model
 
 
@@ -26,9 +27,9 @@ class NaverMovieService(object):
     def __init__(self):
         global url, chrome_driver, driver, savepath, review_train, character_set, k, word_probs
         url = 'https://movie.naver.com/movie/point/af/list.naver?&page='
-        chrome_driver = f'{webcrawler}\\chromedriver.exe'
-        savepath = f'{imdb}\\data\\naver_movie_review_corpus.csv'
-        review_train = f"{imdb}\\data\\review_train.csv"
+        chrome_driver = os.path.join(dir_path("webcrawler"), 'chromedriver.exe')
+        savepath = os.path.join(dir_path("imdb"), "data", "naver_movie_review_corpus.csv")
+        review_train = os.path.join(dir_path("imdb"), "data", "review_train.csv")
         character_set = "UTF-8"
         k = 0.5
         word_probs = []

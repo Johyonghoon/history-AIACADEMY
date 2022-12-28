@@ -5,8 +5,6 @@ from keras import Sequential
 from keras.layers import Dense
 from matplotlib import pyplot as plt
 
-from api.path import fashion
-
 
 class FashionModel(object):
 
