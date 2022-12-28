@@ -1,4 +1,4 @@
-root = r"C:\Users\AIA\PycharmProjects\MSAProject\djangoProject"
+root = r"C:\Users\AIA\PycharmProjects\MSAProject\django(Backend)"
 
 # exrc
 exrc = f"{root}\\exrc"

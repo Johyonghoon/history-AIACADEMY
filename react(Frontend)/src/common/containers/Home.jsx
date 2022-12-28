@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 import { Schedule } from "todos"
 import { Counter, Footer, Navigation } from "common"
-import { LoginContainer, SignUpContainer, FashionContainer, IrisContainer, MnistContainer, StrokeContainer, WebCrawlerContainer, SamsungReportContainer } from "exrc"
+import { LoginContainer, SignUpContainer, FashionContainer, IrisContainer, MnistContainer, StrokeContainer, WebCrawlerContainer, SamsungReportContainer, IMDbContainer } from "exrc"
 
 
 const Home = () => {
@@ -28,6 +28,7 @@ const Home = () => {
                 <Route path="/mnist" element={<MnistContainer/>}></Route>
                 <Route path="/naver-movie" element={<WebCrawlerContainer/>}></Route>
                 <Route path="/samsung-report" element={<SamsungReportContainer/>}></Route>
+                <Route path="/imdb" element={<IMDbContainer/>}></Route>
             </Routes>
             </td>
         </tr>

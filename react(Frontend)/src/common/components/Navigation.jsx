@@ -26,6 +26,7 @@ const Navigation = () => {
         <Link to="/mnist" style={{width:50, margin:10}}>MNIST</Link>
         <Link to="/naver-movie" style={{width:100, margin:10}}>WebCrawler</Link>
         <Link to="/samsung-report" style={{width:100, margin:10}}>samsung-report</Link>
+        <Link to="/imdb" style={{width:100, margin:10}}>IMDb</Link>
       </BottomNavigation>
     </Box>
   );

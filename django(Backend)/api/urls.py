@@ -27,4 +27,5 @@ urlpatterns = [
     path("exrc/dlearn/", include('exrc.dlearn.mnist.url')),
     path("exrc/", include('exrc.webcrawler.naver_movie.url')),
     path("exrc/nlp/", include('exrc.nlp.samsung_report.url')),
+    path("exrc/nlp/", include('exrc.nlp.imdb.url')),
 ]
