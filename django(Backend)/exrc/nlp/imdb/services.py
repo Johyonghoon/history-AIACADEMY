@@ -27,8 +27,8 @@ class NaverMovieService(object):
         global url, chrome_driver, driver, savepath, review_train, character_set, k, word_probs
         url = 'https://movie.naver.com/movie/point/af/list.naver?&page='
         chrome_driver = f'{webcrawler}\\chromedriver.exe'
-        savepath = f'{imdb}\\naver_movie_review_corpus.csv'
-        review_train = f"{imdb}\\review_train.csv"
+        savepath = f'{imdb}\\data\\naver_movie_review_corpus.csv'
+        review_train = f"{imdb}\\data\\review_train.csv"
         character_set = "UTF-8"
         k = 0.5
         word_probs = []

@@ -26,14 +26,15 @@ async function apiPostMethod(review){
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(review)
     }
-    fetch(`${server}/exrc/nlp/imdb`, requestOption)
+    const res = await fetch(`${server}/exrc/nlp/imdb`, requestOption)
     .then(handleResponse)
-    .then(data => {
-        alert('결과: '+JSON.stringify(data))
-    })
+    .then(data => (
+        (JSON.stringify(data))
+        ))
     .catch((error) => {
         alert('error :::: '+error);
     });
+    return Promise.resolve(res);
 }
 
 export default imdbService

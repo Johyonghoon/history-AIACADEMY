@@ -71,7 +71,7 @@ class Imdb_model:
         rmsprop = keras.optimizers.RMSprop(learning_rate=1e-4)
         model = self.create_rnn_model()
         model.compile(optimizer=rmsprop, loss='binary_crossentropy', metrics=['accuracy'])
-        checkpoint_cb = keras.callbacks.ModelCheckpoint('best-simplernn-model.h5', save_best_only=True)
+        checkpoint_cb = keras.callbacks.ModelCheckpoint('data/best-simplernn-model.h5', save_best_only=True)
         early_stopping_cb = keras.callbacks.EarlyStopping(patience=3, restore_best_weights=True)
         history = model.fit(train_oh, train_target, epochs=100, batch_size=64,
                             validation_data=(val_oh, val_target), callbacks=[checkpoint_cb, early_stopping_cb])

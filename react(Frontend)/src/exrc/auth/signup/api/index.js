@@ -19,7 +19,7 @@ function handleResponse(response){
 }
 async function apiSignUp(){
     const res = await 
-    fetch(`${server}/exrc/auth/exrc_users`)
+    fetch(`${server}/exrc/auth/exrc-users`)
     .then(handleResponse)
     .then(data => JSON.stringify(data))
     .catch((error) => {

@@ -12,3 +12,7 @@ def api(request):
     service.create_acc_hook()
     print(f'### DB에 더미 사용자 100명을 생성했습니다. ###')
     return JsonResponse({'result': 'Success'})
+
+def user_list(request):
+    UsersService().get_accounts()
+    return JsonResponse({'result': 'Success'})

@@ -36,7 +36,7 @@ class UsersService:
         """
 
     def get_accounts(self):
-        pass
+        print("포스트맨의 요청이 도달하였음 !! ")
 
     def create_hunnit_acc_in_df(self):
         columns = ['user_id', 'user_email', 'password', 'user_name', 'phone', 'birth',

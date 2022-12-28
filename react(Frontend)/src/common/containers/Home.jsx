@@ -1,3 +1,4 @@
+import 'common/styles/Home.css'
 import { Route, Routes } from "react-router-dom"
 import { Schedule } from "todos"
 import { Counter, Footer, Navigation } from "common"

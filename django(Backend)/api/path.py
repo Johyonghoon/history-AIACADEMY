@@ -14,8 +14,8 @@ mnist = f"{dlearn}\\mnist"
 
 nlp = f"{exrc}\\nlp"
 imdb = f"{nlp}\\imdb"
+samsung_report = f"{nlp}\\samsung_report"
 
 stroke = f"{exrc}\\stroke"
 webcrawler = f"{exrc}\\webcrawler"
 naver_movie = f"{webcrawler}\\naver_movie"
-samsung_report = f"{exrc}\\nlp\\samsung_report"

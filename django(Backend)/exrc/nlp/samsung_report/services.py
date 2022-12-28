@@ -15,7 +15,7 @@ class Controller:
     def data_analysis(self):
         self.download_dictionary()
         self.entity.fname = 'kr-Report_2018.txt'
-        self.entity.context = f"{samsung_report}\\"
+        self.entity.context = f"{samsung_report}\\data\\"
         self.service.extract_tokens(self.entity)
         self.service.extract_hangeul()
         self.service.conversion_token()
