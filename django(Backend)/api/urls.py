@@ -19,8 +19,7 @@ from api.views import hello
 
 urlpatterns = [
     path("", hello),
-    path("exrc/auth/", include('exrc.auth.login.url')),
-    path("exrc/auth/", include('exrc.auth.exrc_users.url')),
+    path("exrc/auth/", include('exrc.auth.exrc_users.urls')),
     path("exrc/", include('exrc.stroke.url')),
     path("exrc/dlearn/", include('exrc.dlearn.iris.url')),
     path("exrc/dlearn/", include('exrc.dlearn.fashion.url')),

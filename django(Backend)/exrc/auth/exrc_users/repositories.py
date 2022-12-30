@@ -26,4 +26,10 @@ class UserRepository(object):
     def get_all(self):
         return Response(UserSerializer(Users.objects.all(), many=True).data)
 
+    def find_user_by_email(self, param):
+        return Users.objects.all().filter(user_email=param).values()[0]
+
+    def find_users_by_name(self, param):
+        return Users.objects.all().filter(user_name=param).values()
+
 
