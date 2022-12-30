@@ -1,5 +1,5 @@
 import signupService from "../api"
-const SignUp = () => {
+export default function  SignUp(){
     const onClick = e => {
         e.preventDefault()
         signupService.apiSignUpPostMethodByPromise()
@@ -13,4 +13,3 @@ const SignUp = () => {
     <p>버튼을 클릭하시면, 더미 사용자 100명이 등록됩니다.</p>
     </>)
 }
-export default SignUp

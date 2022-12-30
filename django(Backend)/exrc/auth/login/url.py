@@ -1,7 +1,7 @@
 from django.urls import re_path as url
 
-from exrc.auth.login import view as view_login
+from exrc.auth.login import views
 
 urlpatterns = [
-    url(r'login', view_login.api)
+    url(r'login', views.login),
 ]

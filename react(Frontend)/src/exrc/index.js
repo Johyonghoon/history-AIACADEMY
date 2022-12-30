@@ -4,6 +4,9 @@ export {default as LoginContainer} from './auth/login/containers/LoginContainer'
 export {default as SignUp} from './auth/signup/components/SignUp'
 export {default as SignUpContainer} from './auth/signup/containers/SignUpContainer'
 
+export {default as UserList} from 'exrc/auth/users/containers/UserList'
+export {default as ListForm} from 'exrc/auth/users/components/ListForm'
+
 export {default as Stroke} from 'exrc/stroke/components/Stroke'
 export {default as StrokeContainer} from 'exrc/stroke/containers/StrokeContainer'
 

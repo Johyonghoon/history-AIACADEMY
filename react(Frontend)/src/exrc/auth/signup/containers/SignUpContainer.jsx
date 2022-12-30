@@ -1,6 +1,5 @@
 import SignUp from "../components/SignUp"
 
-const SignUpContainer = () => {
+export default function SignUpContainer(){
     return(<SignUp/>)
 }
-export default SignUpContainer

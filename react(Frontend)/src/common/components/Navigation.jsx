@@ -20,6 +20,7 @@ const Navigation = () => {
         <Link to="/todos" style={{width:50, margin:10}}>Todos</Link>
         <Link to="/signup" style={{width:60, margin:10}}>Sign UP</Link>
         <Link to="/login" style={{width:50, margin:10}}>Login</Link>
+        <Link to="/user-list" style={{width:50, margin:10}}>User List</Link>
         <Link to="/stroke" style={{width:50, margin:10}}>Stroke</Link>
         <Link to="/iris" style={{width:50, margin:10}}>Iris</Link>
         <Link to="/fashion" style={{width:50, margin:10}}>Fashion</Link>

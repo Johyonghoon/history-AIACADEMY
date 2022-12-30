@@ -2,12 +2,12 @@ import 'common/styles/Home.css'
 import { Route, Routes } from "react-router-dom"
 import { Schedule } from "todos"
 import { Counter, Footer, Navigation } from "common"
-import { LoginContainer, SignUpContainer, FashionContainer, IrisContainer, MnistContainer, StrokeContainer, WebCrawlerContainer, SamsungReportContainer, IMDbContainer } from "exrc"
+import { LoginContainer, SignUpContainer, FashionContainer, IrisContainer, MnistContainer, StrokeContainer, WebCrawlerContainer, SamsungReportContainer, IMDbContainer, UserList } from "exrc"
 
 
 const Home = () => {
     return (<>
-    <table style={{ width: "900px", height: "600px", margin: "0 auto", border: "1px solid black"}}>
+    <table style={{ width: "1200px", height: "600px", margin: "0 auto", border: "1px solid black"}}>
         <thead>
             <tr columns="3" >
                 <td style={{ width: "100%", border: "1px solid black"}}>
@@ -19,10 +19,12 @@ const Home = () => {
         <tr style={{ width: "20%", height: "80%",  border: "1px solid black"}}>
             <td style={{ width: "100%", border: "1px solid black"}}>
             <Routes>
+                {/* <Route element={<Home/>} path="/"></Route> */}
                 <Route path="/counter" element={<Counter/>}></Route>
                 <Route path="/todos" element={<Schedule/>}></Route>
                 <Route path="/signup" element={<SignUpContainer/>}></Route>
                 <Route path="/login" element={<LoginContainer/>}></Route>
+                <Route path="/user-list" element={<UserList/>}></Route>
                 <Route path="/stroke" element={<StrokeContainer/>}></Route>
                 <Route path="/iris" element={<IrisContainer/>}></Route>
                 <Route path="/fashion" element={<FashionContainer/>}></Route>
