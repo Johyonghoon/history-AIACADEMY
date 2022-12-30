@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from rest_framework import status
 from rest_framework.decorators import api_view, parser_classes
 from rest_framework.parsers import JSONParser
+from rest_framework.response import Response
 
 from exrc.auth.exrc_users.repositories import UserRepository
 from exrc.auth.exrc_users.serializers import UserSerializer
@@ -10,9 +11,9 @@ from exrc.auth.exrc_users.services import UsersService
 
 @api_view(['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
 @parser_classes([JSONParser])
-def users(request):
+def user(request):
     if request.method == "GET":
-        return UserRepository().find_user_by_email(request.data["user_email"])
+        return Response(UserRepository().find_user_by_email(request.data["user_email"]))
     elif request.method == "POST":
         new_user = request.data
         print(f" 리액트에서 등록한 신규 사용자 {new_user}")
@@ -60,4 +61,4 @@ def login(request): return UserRepository().login(request.data)
 @api_view(['GET'])
 @parser_classes([JSONParser])
 def user_list_by_name(request):
-    return UserRepository().find_users_by_name(request.data["user_name"])
+    return Response(UserRepository().find_users_by_name(request.data["user_name"]))
