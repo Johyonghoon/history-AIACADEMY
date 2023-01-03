@@ -17,7 +17,8 @@ def dir_path(param):
             (param == "fashion") \
             or (param == "fruits") \
             or (param == "iris") \
-            or (param == "mnist"):
+            or (param == "mnist") \
+            or (param == "aitrader"):
         return os.path.join(root, "exrc", "dlearn", param)
     elif \
             (param == "imdb") \
