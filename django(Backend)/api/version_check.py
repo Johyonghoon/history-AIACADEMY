@@ -36,4 +36,5 @@ if __name__ == '__main__':
     CUDA 프로그래밍 가능여부 :  True
     CUDA 프로그래밍 가능여부 : NVIDIA GeForce RTX 2080
     사용 가능 GPU 갯수 :  1
+    test
     '''
