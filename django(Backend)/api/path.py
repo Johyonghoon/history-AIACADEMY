@@ -1,7 +1,7 @@
 import os
 import platform
 myos = platform.system()
-root = r"C:\Users\AIA\PycharmProjects\MSAProject\django(Backend)"
+root = r"C:\Users\Quiet\PycharmProjects\MSAProject\django(Backend)"
 
 
 def dir_path(param):

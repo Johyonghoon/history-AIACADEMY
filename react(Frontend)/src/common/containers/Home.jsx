@@ -2,7 +2,7 @@ import 'common/styles/Home.css'
 import { Route, Routes } from "react-router-dom"
 import { Schedule } from "todos"
 import { Counter, Footer, Navigation } from "common"
-import { LoginContainer, SignUpContainer, FashionContainer, IrisContainer, MnistContainer, StrokeContainer, WebCrawlerContainer, SamsungReportContainer, IMDbContainer, UserList } from "exrc"
+import { LoginContainer, FashionContainer, IrisContainer, MnistContainer, StrokeContainer, WebCrawlerContainer, SamsungReportContainer, IMDbContainer, UserList, Dummy } from "exrc"
 
 
 const Home = () => {
@@ -22,9 +22,9 @@ const Home = () => {
                 {/* <Route element={<Home/>} path="/"></Route> */}
                 <Route path="/counter" element={<Counter/>}></Route>
                 <Route path="/todos" element={<Schedule/>}></Route>
-                <Route path="/signup" element={<SignUpContainer/>}></Route>
+                <Route path="/dummy" element={<Dummy/>}></Route>
                 <Route path="/login" element={<LoginContainer/>}></Route>
-                <Route path="/user-list" element={<UserList/>}></Route>
+                <Route path="/list" element={<UserList/>}></Route>
                 <Route path="/stroke" element={<StrokeContainer/>}></Route>
                 <Route path="/iris" element={<IrisContainer/>}></Route>
                 <Route path="/fashion" element={<FashionContainer/>}></Route>

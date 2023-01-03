@@ -12,7 +12,7 @@ export default function UserList(){
     }, [])
     const fetchList = () => {
         axios
-        .get('http://127.0.0.1:8000/exrc/auth/user-list')
+        .get('http://127.0.0.1:8000/exrc/auth/list')
         .then(res => {setList(res.data)})
         .catch(err =>{console.log(err)})
     }

@@ -5,6 +5,8 @@ from keras import Sequential
 from keras.layers import Dense
 from matplotlib import pyplot as plt
 
+from api.path import dir_path
+
 
 class FashionModel(object):
 
@@ -21,13 +23,13 @@ class FashionModel(object):
             keras.layers.Dense(128, activation='relu'),
             keras.layers.Dense(10, activation='softmax')
         ])
-        model.compile(optimizer='adam',
-                      loss='sparse_categorical_crossentropy',
+        model.compile(loss='sparse_categorical_crossentropy',
+                      optimizer='adam',
                       metrics=['accuracy'])
         model.fit(train_images, train_labels, epochs=5)
         test_loss, test_acc = model.evaluate(test_images, test_labels)
         print(f"Test Accuracy is {test_acc}")
-        file_name = f"{fashion}\\save\\fashion_model.h5"
+        file_name = os.path.join(dir_path("fashion"), "save", "fashion_model.h5")
         model.save(file_name)
 
 

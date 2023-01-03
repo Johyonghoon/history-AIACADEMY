@@ -1,6 +1,6 @@
 const server = `http://localhost:8000`
-const signupService = {
-    apiSignUp, apiSignUpPostMethodByPromise
+const dummyService = {
+    apiDummy, apiDummyPostMethodByPromise
 }
 function handleResponse(response){ 
     return response.text()
@@ -17,7 +17,7 @@ function handleResponse(response){
             return data
         })
 }
-async function apiSignUp(){
+async function apiDummy(){
     const res = await 
     fetch(`${server}/exrc/auth/exrc-users`)
     .then(handleResponse)
@@ -29,13 +29,13 @@ async function apiSignUp(){
     // return Promise.resolve(res);
 }
 
-async function apiSignUpPostMethodByPromise(){
+async function apiDummyPostMethodByPromise(){
     const requestOption = {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify()
     }
-    fetch(`${server}/exrc/auth/exrc_users`, requestOption)
+    fetch(`${server}/exrc/auth/exrc-users`, requestOption)
     .then(handleResponse)
     .then(data => {
         alert('결과: '+JSON.stringify(data))
@@ -45,4 +45,4 @@ async function apiSignUpPostMethodByPromise(){
     });
 }
 
-export default signupService
+export default dummyService

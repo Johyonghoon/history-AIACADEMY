@@ -1,8 +1,8 @@
 export {default as Login} from './auth/login/components/Login'
 export {default as LoginContainer} from './auth/login/containers/LoginContainer'
 
-export {default as SignUp} from './auth/signup/components/SignUp'
-export {default as SignUpContainer} from './auth/signup/containers/SignUpContainer'
+export {default as DummyForm} from './auth/signup/components/DummyForm'
+export {default as Dummy} from './auth/signup/containers/Dummy'
 
 export {default as UserList} from 'exrc/auth/users/containers/UserList'
 export {default as ListForm} from 'exrc/auth/users/components/ListForm'
