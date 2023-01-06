@@ -3,8 +3,8 @@ from django.db import models
 
 class Users(models.Model):
     use_in_migrations = True
+    user_email = models.CharField(max_length=20, primary_key=True)
     user_id = models.CharField(max_length=20)
-    user_email = models.CharField(max_length=20)
     password = models.CharField(max_length=20)
     user_name = models.CharField(max_length=20)
     phone = models.CharField(max_length=20)
