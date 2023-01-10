@@ -5,3 +5,4 @@ fastapi
 pymysql
 pandas
 fastapi_sqlalchemy
+sqlalchemy_utils

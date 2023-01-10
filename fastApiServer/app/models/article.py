@@ -1,25 +1,21 @@
-import datetime
+from pydantic import BaseConfig
+from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy.orm import relationship
+from app.database import Base
+from sqlalchemy_utils import UUIDType
 
-from sqlalchemy.dialects.postgresql import UUID
+class Article(Base):
 
-from .mixins import TimestampMixin
-from ..database import Base
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, DateTime
-from sqlalchemy.orm import Session, relationship
-
-
-class Article(Base, TimestampMixin):
-
-    __tablename__ = "articles"
-    __table_args__ = {'extend_existing': True}
+    __tablename__ = 'articles'
 
     art_seq = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String(100))
     content = Column(String(1000))
-    user_id = Column(UUID(as_uuid=True), ForeignKey('users.user_id'), nullable=True)
+    user_id = Column(UUIDType(binary=False), ForeignKey('users.user_id'), nullable=True)
 
     user = relationship('User', back_populates='articles')
 
-    class Config:
-        arbitrary_types_allowed = True
 
+    class Config:
+        BaseConfig.arbitrary_types_allowed = True
+        allow_population_by_field_name = True

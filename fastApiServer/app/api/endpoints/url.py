@@ -11,4 +11,3 @@ class Url:
     def router(self, menu):
         if menu == LOGIN:
             UserService().login()
-            
