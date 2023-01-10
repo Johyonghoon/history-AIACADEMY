@@ -1,5 +1,4 @@
 import datetime
-from typing import List
 
 from pydantic import BaseModel
 
@@ -13,7 +12,3 @@ class Post(BaseModel):
 
     class Config:
         orm_mode = True
-
-
-class PostList(Post):
-    posts: List[Post] = []

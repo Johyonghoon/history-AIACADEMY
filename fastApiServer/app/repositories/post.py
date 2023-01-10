@@ -12,5 +12,5 @@ def find_posts_legacy():
     return cursor.fetchall()
 
 
-def find_posts(db: Session):
+def find_posts(page: int, db: Session):
     return db.query(Post).all()
