@@ -1,5 +1,5 @@
 from app.database import engine, conn
-from app.models.post import Post
+from app.models.article import Post
 import pymysql
 from sqlalchemy.orm import sessionmaker, Session
 pymysql.install_as_MySQLdb()
