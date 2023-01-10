@@ -3,12 +3,12 @@ import datetime
 from pydantic import BaseModel
 
 
-class Post(BaseModel):
-    post_id: int
+class Article(BaseModel):
+    art_seq: int
     title: str
     content: str
-    create_at: datetime
-    updated_at: datetime
+    create_at: str
+    updated_at: str
 
     class Config:
         orm_mode = True
