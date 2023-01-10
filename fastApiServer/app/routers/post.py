@@ -7,5 +7,4 @@ router = APIRouter()
 
 @router.get("/")
 async def get_posts(db: Session = Depends(get_db)):
-    print("main test")
     return {"data": dao.find_posts(db=db)}
