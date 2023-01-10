@@ -11,7 +11,7 @@ const Home = () => {
         <thead>
             <tr columns="3" >
                 <td style={{ width: "100%", border: "1px solid black"}}>
-                    <Navigation style="align:center;"/>
+                    <Navigation/>
                 </td>
             </tr>
         </thead>
