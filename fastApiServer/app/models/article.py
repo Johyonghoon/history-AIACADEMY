@@ -1,20 +1,24 @@
 import datetime
 
+from sqlalchemy.dialects.postgresql import UUID
+
+from .mixins import TimestampMixin
 from ..database import Base
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, DateTime
 from sqlalchemy.orm import Session, relationship
 
 
-class Post(Base):
+class Article(Base, TimestampMixin):
 
-    __tablename__ = "posts"
+    __tablename__ = "articles"
     __table_args__ = {'extend_existing': True}
 
-    post_id = Column(String(20), primary_key=True, autoincrement=True)
+    art_seq = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String(100))
     content = Column(String(1000))
-    create_at = Column(DateTime, default=datetime.datetime.now)
-    updated_at = Column(DateTime, onupdate=datetime.datetime.now)
+    user_id = Column(UUID(as_uuid=True), ForeignKey('users.user_id'), nullable=True)
+
+    user = relationship('User', back_populates='articles')
 
     class Config:
         arbitrary_types_allowed = True
