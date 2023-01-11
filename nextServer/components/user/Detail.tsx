@@ -1,4 +1,7 @@
-export default function Detail() {
+import { useState } from "react"
+
+
+export default function UserDetail() {
 
     return (<>
         <h2>회원정보</h2>
