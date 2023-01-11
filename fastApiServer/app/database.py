@@ -2,7 +2,6 @@ from typing import Generator
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
-
 from app.env import HOSTNAME, PORT, USERNAME, PASSWORD, CHARSET, DATABASE, DB_URL
 import pymysql
 
@@ -19,11 +18,13 @@ SessionLocal = scoped_session(
 )
 Base.query = SessionLocal.query_property()
 
+
 async def init_db():
     try:
         Base.metadata.create_all(bind=engine)
     except Exception as e:
         raise e
+
 
 def get_db() -> Generator:
     try:
@@ -31,4 +32,3 @@ def get_db() -> Generator:
         yield db
     finally:
         db.close()
-

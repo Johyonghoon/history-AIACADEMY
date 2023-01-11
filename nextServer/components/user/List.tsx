@@ -1,11 +1,10 @@
-export default function ListForm({list: []}){
+export default function List(){
     return <><h2>유저 목록</h2>
     <table className='user-list'>
         <thead>
             <tr>
             <th>user_id</th>
             <th>user_email</th>
-            <th>password</th>
             <th>user_name</th>
             <th>phone</th>
             <th>birth</th>

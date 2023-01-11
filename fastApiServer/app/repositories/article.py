@@ -3,10 +3,10 @@ from app.models.article import Article
 from sqlalchemy.orm import Session
 
 
-
 def find_articles(page,db: Session):
     print(f"page number is {page}")
     return db.query(Article).all()
+
 
 def join(item, db):
     return None
