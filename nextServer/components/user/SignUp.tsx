@@ -1,4 +1,4 @@
-const Join: React.FC = () => 
+const SignUp: React.FC = () => 
     (<>
         <h2>회원가입</h2>
         <form action="/send-data-here" method="post" >
@@ -32,4 +32,4 @@ const Join: React.FC = () =>
           </form> 
         </>)
 
-export default Join
+export default SignUp
