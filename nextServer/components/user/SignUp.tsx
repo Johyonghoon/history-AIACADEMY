@@ -1,7 +1,7 @@
 const SignUp: React.FC = () => 
     (<>
         <h2>회원가입</h2>
-        <form action="/send-data-here" method="post" >
+        <form action="/" method="post" >
 
           <label htmlFor="user_email">User Email:</label>
           <input type="text"  id="user_email" name="user_email" required minLength= {10} maxLength={20}/> <br/>
@@ -13,7 +13,7 @@ const SignUp: React.FC = () =>
           <input type="text" id="user_name" name="user_name" required /> <br/>
 
           <label htmlFor="phone">phone:</label>
-          <input type="text" id="phone" name="phone" required /> <br/>
+          <input type="text" id="phone" name="phone" /> <br/>
 
           <label htmlFor="birth">Birth:</label> 
           <input type="text" id="birth" name="birth" /> <br/>

@@ -2,6 +2,7 @@ import os
 import sys
 import logging
 from fastapi_sqlalchemy import DBSessionMiddleware
+from .admin.utils import current_time
 from .env import DB_URL
 from app.database import Base, engine, init_db
 
@@ -12,7 +13,7 @@ from .routers.user import router as user_router
 from .routers.article import router as article_router
 from datetime import datetime
 
-print(f" ################ app.main Started At {datetime.now()} ################# ")
+print(f" ################ app.main Started At {current_time()} ################# ")
 
 
 router = APIRouter()

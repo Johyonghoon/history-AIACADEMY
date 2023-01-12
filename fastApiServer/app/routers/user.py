@@ -9,34 +9,34 @@ from app.schemas.user import User
 router = APIRouter()
 
 
-@router.post("/")
+@router.post("/signup")
 async def signup(item: User, db: Session = Depends(get_db)):
-    print(f" 회원가입에 진입한 시간: {current_time}")
+    print(f" 회원가입에 진입한 시간: {current_time()}")
     user_dict = item.dict()
     print(f"SignUp Inform : {user_dict}")
     dao.join(item, db)
     return {"data": "success"}
 
 
-@router.post("/{id}")
+@router.post("/login/{id}")
 async def login(id: str, item: User, db: Session = Depends(get_db)):
     dao.login(id, item, db)
     return {"data": "success"}
 
 
-@router.put("/{id}")
+@router.put("/modify/{id}")
 async def update(id: str, item: User, db: Session = Depends(get_db)):
     dao.update(id, item, db)
     return {"data": "success"}
 
 
-@router.delete("/{id}")
+@router.delete("/delete/{id}")
 async def delete(id:str, item: User, db: Session = Depends(get_db)):
     dao.delete(id, item, db)
     return {"data": "success"}
 
 
-@router.get("/{page}")
+@router.get("/page/{page}")
 async def get_users(page: int, db: Session = Depends(get_db)):
     ls = dao.find_users(page,db)
     return {"data": ls}
