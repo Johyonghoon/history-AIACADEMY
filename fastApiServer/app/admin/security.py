@@ -1,0 +1,43 @@
+import secrets
+import string
+from datetime import timedelta
+from typing import Union, Any
+import shortuuid
+from app.admin.utils import utc_seoul
+
+
+import jwt
+from passlib.context import CryptContext
+
+ACCESS_TOKEN_EXPIRE_MINUTES = 30  # 30 minutes
+REFRESH_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7 # 7 days
+ALGORITHM = "HS256"
+# JWT_SECRET_KEY = os.environ['JWT_SECRET_KEY']     # should be kept secret
+JWT_SECRET_KEY = "JWT_SECRET_KEY"
+# JWT_REFRESH_SECRET_KEY = os.environ['JWT_REFRESH_SECRET_KEY']
+JWT_REFRESH_SECRET_KEY = "JWT_REFRESH_SECRET_KEY"
+
+password_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+def myuuid():
+    alphabet = string.ascii_lowercase + string.digits
+    su = shortuuid.ShortUUID(alphabet=alphabet)
+    return su.random(length=8)
+
+def get_hashed_password(plain_password: str) -> str:
+    return password_context.hash(plain_password)
+
+def verify_password(plain_password: str, hashed_password: str):
+    pass
+
+def generate_token(subject: Union[str, Any], expires_delta: int = None):
+    pass
+
+def generate_token_by_secrets():
+    return secrets.token_urlsafe(32)  # python3.8 기준으로 DEFAULT_ENTROPY == 32
+
+def refresh_token(subject: Union[str, Any], expires_delta: int = None):
+    pass
+
+def get_expiration_date():
+    return utc_seoul() + timedelta(days=3)

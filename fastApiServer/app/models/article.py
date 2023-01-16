@@ -3,7 +3,6 @@ from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from app.database import Base
 from sqlalchemy_utils import UUIDType
-
 from app.models.mixins import TimestampMixin
 
 
@@ -21,3 +20,11 @@ class Article(Base, TimestampMixin):
 
     class Config:
         arbitrary_types_allowed = True
+
+    def __str__(self):
+        return f'글번호: {self.art_seq}, \n ' \
+               f'이메일: {self.title}, \n ' \
+               f'내용 {self.content} \n ' \
+               f'아이디: {self.user_id} \n' \
+               f'작성일: {self.create_at} \n' \
+               f'수정일: {self.updated_at} \n'

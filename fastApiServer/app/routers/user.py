@@ -1,44 +1,57 @@
+from starlette.responses import JSONResponse
+
+import app.cruds.user as dao
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-import app.repositories.user as dao
+from app.admin.security import get_hashed_password
 from app.admin.utils import current_time
 from app.database import get_db
-from app.schemas.user import User
+from app.schemas.user import UserDTO
 
 router = APIRouter()
 
 
-@router.post("/signup")
-async def signup(item: User, db: Session = Depends(get_db)):
+@router.post("/register", status_code=201)
+async def register_user(dto: UserDTO, db: Session = Depends(get_db)):
     print(f" 회원가입에 진입한 시간: {current_time()}")
-    user_dict = item.dict()
-    print(f"SignUp Inform : {user_dict}")
-    dao.join(item, db)
-    return {"data": "success"}
+    print(f" SignUp Inform : {dto}")
+    user_crud = dao.UserCrud(db)
+    user_id = user_crud.find_user_by_email(request_user=dto)
+    if user_id == "":
+        print(f" 해시 전 비번 {dto.password}")
+        dto.password = get_hashed_password(dto.password)
+        print(f" 해시 후 비번 {dto.password}")
+        result = user_crud.add_user(request_user=dto)
+    else:
+        result = JSONResponse(status_code=400, content=dict(msg="이메일이 이미 존재합니다."))
+    return {"data": result}
+
+    return {"data": "test"}
 
 
-@router.post("/login/{id}")
-async def login(id: str, item: User, db: Session = Depends(get_db)):
-    dao.login(id, item, db)
-    return {"data": "success"}
+@router.post("/login")
+async def login(user: UserDTO, db: Session = Depends(get_db)):
+    return_user = dao.login(user, db)
+    print(f"로그인 정보 : {return_user.user_email}")
+    return {"data": return_user}
 
 
 @router.put("/modify/{id}")
-async def update(id: str, item: User, db: Session = Depends(get_db)):
+async def update(id: str, item: UserDTO, db: Session = Depends(get_db)):
     dao.update(id, item, db)
     return {"data": "success"}
 
 
 @router.delete("/delete/{id}")
-async def delete(id:str, item: User, db: Session = Depends(get_db)):
+async def delete(id:str, item: UserDTO, db: Session = Depends(get_db)):
     dao.delete(id, item, db)
     return {"data": "success"}
 
 
 @router.get("/page/{page}")
 async def get_users(page: int, db: Session = Depends(get_db)):
-    ls = dao.find_users(page,db)
+    ls = dao.find_users(page, db)
     return {"data": ls}
 
 
