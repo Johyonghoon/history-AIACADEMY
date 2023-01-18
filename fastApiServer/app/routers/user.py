@@ -31,24 +31,8 @@ async def register_user(dto: UserDTO, db: Session = Depends(get_db)):
 @router.post("/login", status_code=200)
 async def login(dto: UserDTO, db: Session = Depends(get_db)):
     user_crud = UserCrud(db)
-    print(f"존재 확인 email {dto.user_email}, PW {dto.password}")
-    user_id = user_crud.find_user_by_email(request_user=dto)
-    print(f" find_user_by_email 다녀옴 {user_id}")
-    dto.user_id = user_id
-    print(f" 로그인 보내기 전에 확인 email {dto.user_email}, PW {dto.password}")
-    if user_id != "":
-        login_user = user_crud.login(request_user=dto)
-        if login_user is not None:
-            print(f"로그인 성공정보: \n{login_user}")
-            new_token = generate_token(login_user.user_email)
-            login_user.token = new_token
-            result = login_user
-        else:
-            print(f" 로그인 실패 ")
-            result = JSONResponse(status_code=400, content=dict(msg="비밀번호가 일치하지 않습니다."))
-    else:
-        result = JSONResponse(status_code=400, content=dict(msg="이메일 주소가 존재하지 않습니다."))
-    return result
+    token_or_fail_message = user_crud.login(request_user=dto)
+    return JSONResponse(status_code=200, content=dict(msg=token_or_fail_message))
 
 
 @router.put("/update/{id}")

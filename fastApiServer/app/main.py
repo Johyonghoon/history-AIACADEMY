@@ -9,13 +9,14 @@ from .admin.utils import current_time
 from .env import DB_URL
 from app.database import Base, engine, init_db
 
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-baseurl = os.path.dirname(os.path.abspath(__file__))
 from fastapi import FastAPI, APIRouter, Depends, HTTPException
 from .routers.user import router as user_router
 from .routers.article import router as article_router
 from .test.user import router as test_router
 from fastapi.security import APIKeyHeader
+
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+baseurl = os.path.dirname(os.path.abspath(__file__))
 API_TOKEN = "SECRET_API_TOKEN"
 api_key_header = APIKeyHeader(name="Token")
 
@@ -25,7 +26,7 @@ print(f" ################ app.main Started At {current_time()} #################
 router = APIRouter()
 router.include_router(user_router, prefix="/users", tags=["users"])
 router.include_router(article_router, prefix="/articles", tags=["articles"])
-router.include_router(test_router, prefix="/test",tags=["test"])
+router.include_router(test_router, prefix="/test", tags=["test"])
 app = FastAPI()
 origins = ["http://localhost:3000"]
 app.add_middleware(

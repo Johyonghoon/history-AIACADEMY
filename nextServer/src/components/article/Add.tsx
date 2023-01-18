@@ -30,10 +30,10 @@ export default function AddArticle() {
             
             {errors.title && <p>{errors.title.message}</p>} </Cell></Row>
             <Row><Cell>
-          <label htmlFor="username">글쓴이</label></Cell>
+          <label htmlFor="user_name">글쓴이</label></Cell>
           <Cell><Input type="text" 
             placeholder="글쓴이 Email"
-            id="username" name="username" required /> 
+            id="user_name" name="user_name" required /> 
                 </Cell>
               </Row>
              

@@ -6,7 +6,7 @@ class ArticleDTO(BaseModel):
     art_seq: Optional[int]
     title: Optional[str]
     content: Optional[str]
-    create_at: Optional[str]
+    created_at: Optional[str]
     updated_at: Optional[str]
     user_id: Optional[str]
 
