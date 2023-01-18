@@ -163,14 +163,12 @@ export default function Join() {
 const Sheet = styled.table`
 border: 1px solid black
 width: 70%
-
 `
 const Row = styled.tr`
 border: 1px solid black
 `
 const Cell = styled.td`
 border: 1px solid black,
-
 `
 const Input = styled.input`
 width: 100%

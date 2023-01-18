@@ -19,6 +19,7 @@ class Article(Base, TimestampMixin):
 
 
     class Config:
+        BaseConfig.arbitrary_types_allowed = True
         arbitrary_types_allowed = True
 
     def __str__(self):

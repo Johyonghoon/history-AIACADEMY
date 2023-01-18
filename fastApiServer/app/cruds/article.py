@@ -1,39 +1,25 @@
+from abc import abstractmethod, ABCMeta
+from typing import List
 from app.models.article import Article
-
-from sqlalchemy.orm import Session
-
-
-def find_articles(page,db: Session):
-    print(f"page number is {page}")
-    return db.query(Article).all()
+from app.schemas.article import ArticleDTO
 
 
-def join(item, db):
-    return None
+class ArticleBase(metaclass=ABCMeta):
 
+    @abstractmethod
+    def write(self, request_article: ArticleDTO) -> str: pass
 
-def login(id, item, db):
-    return None
+    @abstractmethod
+    def update_article(self, request_article: ArticleDTO) -> str: pass
 
+    @abstractmethod
+    def delete_article(self, request_article: ArticleDTO) -> str: pass
 
-def update(id, item, db):
-    return None
+    @abstractmethod
+    def find_all_articles(self, page: int) -> List[ArticleDTO]: pass
 
+    @abstractmethod
+    def find_articles_by_userid(self, request_article: ArticleDTO) -> ArticleDTO: pass
 
-def delte(id, item, db):
-    return None
-
-
-def find_article(id, db):
-    return None
-
-
-def find_articles_by_job(search, page, db):
-    return None
-
-
-
-
-
-def find_article_by_title(search, page, db):
-    return None
+    @abstractmethod
+    def find_articles_by_title(self, request_article: ArticleDTO) -> str: pass
