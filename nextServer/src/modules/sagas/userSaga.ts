@@ -41,6 +41,7 @@ function* login(action: {payload: UserLoginInput}){
     try{
         alert(`3 사가 내부 : ${JSON.stringify(param)}` )
         const response: User = yield call(user.login, param)
+        alert(`555 return값 확인 : ${response}`)
         yield put(loginSuccess(response))
         window.location.href = ('/loginHome')
     }catch(error){

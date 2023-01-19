@@ -72,3 +72,8 @@ async def on_startup():
 @app.get("/hello/{name}")
 async def say_hello(name: str):
     return {"message": f"Hello {name}"}
+
+
+@app.get("/no-match-token")
+async def no_match_token():
+    return {"message": f"토큰 유효시간이 지났습니다."}
