@@ -7,6 +7,7 @@ from app.models.user import User
 from app.schemas.user import UserDTO, UserUpdate
 from sqlalchemy.orm import Session
 import pymysql
+from fastapi_pagination import Page, paginate, add_pagination
 pymysql.install_as_MySQLdb()
 
 
@@ -80,9 +81,8 @@ class UserCrud(UserBase, ABC):
         self.db.commit()
         return "탈퇴 성공입니다" if is_success != 0 else "탈퇴 실패입니다."
 
-    def find_all_users_per_page(self, page: int) -> List[User]:
-        print(f" page number is {page}")
-        return self.db.query(User).all()
+    def find_all_users_order_by_created_at(self) -> List[User]:
+        return self.db.query(User).order_by(User.created_at).all()
 
     def find_user_by_token(self, request_user: UserDTO) -> User:
         user = User(**request_user.dict())
@@ -97,6 +97,9 @@ class UserCrud(UserBase, ABC):
     def find_user_by_id(self, request_user: UserDTO) -> User:
         user = User(**request_user.dict())
         return self.db.query(User).filter(User.user_id == user.user_id).one_or_none()
+
+    def count_all_users(self) -> int:
+        return self.db.query(User).count()
 
     def logout_user(self, request_user: UserDTO) -> str:
         user = self.find_user_by_token(request_user)

@@ -10,7 +10,7 @@ const UserListPage: NextPage =  function(){
                 </tr>
             </thead>
             <tbody>
-            
+                
             </tbody>
         </table>
     </>

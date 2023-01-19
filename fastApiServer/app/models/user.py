@@ -5,7 +5,7 @@ from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 
 
-class User(Base, TimestampMixin):  # Base
+class User(Base, TimestampMixin):
 
     __tablename__ = "users"
 

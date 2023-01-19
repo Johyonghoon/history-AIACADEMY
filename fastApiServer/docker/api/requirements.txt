@@ -9,3 +9,4 @@ sqlalchemy_utils
 pyjwt
 shortuuid
 passlib
+fastapi_pagination
