@@ -98,6 +98,14 @@ class UserCrud(UserBase, ABC):
         user = User(**request_user.dict())
         return self.db.query(User).filter(User.user_id == user.user_id).one_or_none()
 
+    def logout_user(self, request_user: UserDTO) -> str:
+        user = self.find_user_by_token(request_user)
+        is_success = self.db.query(User).filter(User.user_id == user.user_id) \
+            .update({User.token: ""}, synchronize_session=False)
+        self.db.commit()
+        print(f"토큰 삭제되면 1 리턴 예상함 : {is_success}")
+        return "LOGOUT"
+
     def find_user_by_id_for_update(self, request_user: UserUpdate) -> User:
         user = User(**request_user.dict())
         return self.db.query(User).filter(User.user_id == user.user_id).one_or_none()

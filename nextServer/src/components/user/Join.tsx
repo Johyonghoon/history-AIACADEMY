@@ -9,7 +9,6 @@ export default function Join() {
     const dispatch = useDispatch()
     const { register, handleSubmit, watch, formState: { errors }  } = useForm<User>()
     const onSubmit: SubmitHandler<User> = data => {
-      alert(`1 - 리액트에 입력된 회원정보 : ${JSON.stringify(data)}`)
       dispatch(joinRequest(data))
     };
     const passwordRef = useRef<string | null | undefined>(null)

@@ -9,7 +9,7 @@ export interface User{
     address? : string,
     job? : string,
     user_interests? : string,
-    token? : string
+    token? : string,
     created_at? : string,
     updated_at? : string
 }

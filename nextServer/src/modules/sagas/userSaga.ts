@@ -19,29 +19,13 @@ export function* watchJoin(){
         }
     })
 }
-/**
-export function* watchLogin(){
-    yield takeLatest(loginRequest, (action: {payload: User}) => {
-        
-        try{
-            const response: any = user.login(action.payload)
-            alert(`watch login성공 ${JSON.stringify(response.data)} `)
-            put(loginSuccess({data: response.data}))
-            window.location.href = '/'
-        }catch(error){
-            put(userAction.joinFailure(error))
-        }
-    })
-}
- */
+
 export interface UserLoginInput{ user_email: string, password: string }
 function* login(action: {payload: UserLoginInput}){
     const {loginSuccess, loginFailure} = userAction
     const param = action.payload
     try{
-        alert(`3 사가 내부 : ${JSON.stringify(param)}` )
         const response: User = yield call(user.login, param)
-        alert(`555 return값 확인 : ${response}`)
         yield put(loginSuccess(response))
         window.location.href = ('/loginHome')
     }catch(error){
@@ -49,7 +33,23 @@ function* login(action: {payload: UserLoginInput}){
     }
 }
 
+function* logout(action: {payload: UserLoginInput}){
+    const {logoutSuccess, logoutFailure} = userAction
+    const param = action.payload
+    try{
+        const response: User = yield call(user.logout, param)
+        yield put(logoutSuccess())
+        window.location.href = ('/')
+    }catch(error:any){
+        put(userAction.logoutFailure(error))
+    }
+}
+
 export function* watchLogin(){
     const {loginRequest} = userAction
     yield takeLeading(loginRequest, login)
+}
+export function* watchLogout(){
+    const {logoutRequest} = userAction
+    yield takeLeading(logoutRequest, logout)
 }

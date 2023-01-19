@@ -9,11 +9,11 @@ export default function Navbar(){
 
   const logout = (e : React.FormEvent<HTMLInputElement>) => {
     e.preventDefault()
-    alert(`1 로그아웃 버튼 클릭`)
     const token = localStorage.getItem("session")
-    alert(`Navbar 에 저장된 토큰 ${token}`)
     dispatch(logoutRequest({"token":token}))
+    localStorage.removeItem("session")
   }
+
   return (
     <div className="container-fluid">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
