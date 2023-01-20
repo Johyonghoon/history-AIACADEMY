@@ -6,25 +6,23 @@ import logging
 from fastapi_sqlalchemy import DBSessionMiddleware
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse
-
 from .admin.utils import current_time
 from .env import DB_URL
 from app.database import Base, engine, init_db
 from fastapi_pagination import LimitOffsetPage, paginate, add_pagination
 from fastapi import FastAPI, APIRouter, Depends, HTTPException
+from fastapi.security import APIKeyHeader
+
 from .routers.user import router as user_router
 from .routers.article import router as article_router
 from .test.user import router as test_router
-from fastapi.security import APIKeyHeader
 
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 baseurl = os.path.dirname(os.path.abspath(__file__))
 API_TOKEN = "SECRET_API_TOKEN"
 api_key_header = APIKeyHeader(name="Token")
 
-
 print(f" ################ app.main Started At {current_time()} ################# ")
-
 
 router = APIRouter()
 router.include_router(user_router, prefix="/users", tags=["users"])
@@ -82,6 +80,3 @@ async def say_hello(name: str):
 async def no_match_token():
     return {"message": f"토큰 유효시간이 지났습니다."}
 
-
-# if __name__ == '__main__':
-#     uvicorn.run("main:app",host='0.0.0.0', port=8000, reload=True)

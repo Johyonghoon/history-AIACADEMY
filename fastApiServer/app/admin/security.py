@@ -3,8 +3,7 @@ import string
 from datetime import datetime, timedelta
 from typing import Union, Any
 import shortuuid
-from app.admin.utils import utc_seoul
-
+from app.admin.utils import utc_seoul, current_time
 
 import jwt
 from passlib.context import CryptContext
@@ -21,6 +20,7 @@ password_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 def myuuid():
+    current_time()
     alphabet = string.ascii_lowercase + string.digits
     su = shortuuid.ShortUUID(alphabet=alphabet)
     return su.random(length=8)

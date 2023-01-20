@@ -1,3 +1,4 @@
+pip==22.3.1
 mysqlclient
 sqlalchemy
 uvicorn
@@ -10,3 +11,4 @@ pyjwt
 shortuuid
 passlib
 fastapi_pagination
+faker

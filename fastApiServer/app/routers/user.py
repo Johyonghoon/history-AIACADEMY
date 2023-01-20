@@ -1,4 +1,7 @@
+from faker import Faker
 from fastapi.encoders import jsonable_encoder
+
+from app.admin.utils import paging, between_random_date
 from app.cruds.user import UserCrud
 from fastapi import APIRouter, Depends
 from fastapi_pagination import Page, paginate, add_pagination, Params
@@ -70,8 +73,12 @@ async def get_users_per_page(page: int, db: Session = Depends(get_db)):
     default_size = 5
     page_result = paginate(results, Params(page=page, size=default_size))
     count = UserCrud(db).count_all_users()
+    pager = paging(request_page=page, row_cnt=count)
     return JSONResponse(status_code=200,
-                        content=jsonable_encoder({"ls": page_result, "count": count}))
+                        content=jsonable_encoder({
+                            "pager": pager,
+                            "users": page_result
+                        }))
 
 
 @router.get("/page/{page}/size/{size}", response_model=Page[UserList])
@@ -86,5 +93,18 @@ async def get_users_change_size(page: int, size: int, db: Session = Depends(get_
 async def get_users_by_job(search: str, page: int, db: Session = Depends(get_db)):
     return JSONResponse(status_code=200,
                         content=jsonable_encoder(UserCrud(db).find_users_by_job(search, page, db)))
+
+
+@router.get("/dummy")
+def insert_hunnit_dummy(db: Session = Depends(get_db)):
+    faker = Faker('ko_KR')
+
+    [UserCrud(db).add_user(UserDTO(
+        user_email=faker.email(),
+        password="qwer1234",
+        user_name=faker.name(),
+        birth=between_random_date(),
+        address=faker.city())) for i in range(100)]
+
 
 add_pagination(router)

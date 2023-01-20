@@ -1,7 +1,7 @@
 from abc import ABC
 from typing import List
 
-from app.admin.security import verify_password, generate_token, get_hashed_password
+from app.admin.security import verify_password, generate_token, get_hashed_password, myuuid
 from app.bases.user import UserBase
 from app.models.user import User
 from app.schemas.user import UserDTO, UserUpdate
@@ -21,6 +21,7 @@ class UserCrud(UserBase, ABC):
         user_id = self.find_user_id_by_email(request_user=request_user)
         if user_id == "":
             user.password = get_hashed_password(user.password)
+            user.user_id = myuuid()
             is_success = self.db.add(user)
             self.db.commit()
             self.db.refresh(user)
@@ -123,8 +124,4 @@ class UserCrud(UserBase, ABC):
 
     def find_all_users(self, db: Session, skip: int = 0, limit: int = 100):
         return db.query(User).offset(skip).limit(limit).all()
-
-
-
-
 
