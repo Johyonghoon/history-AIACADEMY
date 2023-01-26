@@ -7,7 +7,7 @@ from fastapi_sqlalchemy import DBSessionMiddleware
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse
 from .admin.utils import current_time
-from .env import DB_URL
+from .env_localhost import DB_URL
 from app.database import Base, engine, init_db
 from fastapi_pagination import LimitOffsetPage, paginate, add_pagination
 from fastapi import FastAPI, APIRouter, Depends, HTTPException
@@ -16,6 +16,7 @@ from fastapi.security import APIKeyHeader
 from .routers.user import router as user_router
 from .routers.article import router as article_router
 from .test.user import router as test_router
+from mangum import Mangum
 
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 baseurl = os.path.dirname(os.path.abspath(__file__))
