@@ -9,10 +9,6 @@
 .history
 .svn/
 migrate_working_dir/
-.assets/
-*.png
-*.jpg
-*.jpeg
 
 # IntelliJ related
 *.iml
@@ -46,3 +42,11 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+assets/
+*.jpeg
+*.png
+*.ttf
+*.mp4
+
+lib/ch12_video_call/const/

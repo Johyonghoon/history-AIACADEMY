@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
-void main(){
+void main() {
   runApp(SplashScreen());
 }
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,21 +21,17 @@ class SplashScreen extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/ch04_hello/images/logo.png', width: 200,
-                      ),
-                      CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation(
-                            Colors.white,
-                        ),
-                      ),
-                    ],
-                  )
+                  Image.asset(
+                    'assets/ch04_hello/images/logo.png',
+                    width: 200,
+                  ),
+                  CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation(
+                      Colors.white,
+                    ),
+                  ),
                 ],
-              )
+              ),
             ],
           ),
         ),

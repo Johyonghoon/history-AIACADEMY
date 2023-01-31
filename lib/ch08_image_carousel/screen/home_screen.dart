@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
             .map(
               // ➌ 위젯으로 매핑
               (number) => Image.asset(
-                'assets/ch08_image_carousel/images/image_$number.jpeg',
+                'assets/ch_08_image_carousel/images/image_$number.jpeg',
                 fit: BoxFit.cover,
               ),
             )
