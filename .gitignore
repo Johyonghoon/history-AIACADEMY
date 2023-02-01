@@ -42,11 +42,3 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-
-assets/
-*.jpeg
-*.png
-*.ttf
-*.mp4
-
-lib/ch12_video_call/const/

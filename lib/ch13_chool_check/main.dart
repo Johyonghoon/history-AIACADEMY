@@ -1,10 +1,10 @@
-import 'package:flutterproject/ch13_chool_check/screen/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterproject/ch13_chool_check/screen/chool_check.dart';
 
 void main() {
   runApp(
-    MaterialApp(
-      home: HomeScreen(),
+    const MaterialApp(
+      home: ChoolCheck(),
     ),
   );
 }
