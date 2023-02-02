@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(const ColumnWidgetExample());
+}
+
 class ColumnWidgetExample extends StatelessWidget {
+  const ColumnWidgetExample({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -9,7 +15,7 @@ class ColumnWidgetExample extends StatelessWidget {
           width: double.infinity,
           child: Column(
             // 주축 정렬 지정
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             // 반대축 정렬 지정
             crossAxisAlignment: CrossAxisAlignment.start,
             // 넣고 싶은 위젯 입력

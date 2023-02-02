@@ -1,7 +1,8 @@
-import 'package:flutterproject/ch05_basic_widget/text_button_widget.dart';
 import 'package:flutter/material.dart';
 
 class OutlinedButtonWidgetExample extends StatelessWidget {
+  const OutlinedButtonWidgetExample({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,7 +16,7 @@ class OutlinedButtonWidgetExample extends StatelessWidget {
               foregroundColor: Colors.red,
             ),
             // 버튼에 들어갈 위젯
-            child: Text('아웃라인드 버튼'),
+            child: const Text('Outlined Button'),
           ),
         ),
       ),

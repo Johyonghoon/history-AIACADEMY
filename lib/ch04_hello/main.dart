@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(SplashScreen());
+  runApp(const SplashScreen());
 }
 
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Color(0xFFF99231),
           ),
           child: Row(
@@ -25,7 +26,7 @@ class SplashScreen extends StatelessWidget {
                     'assets/ch04_hello/images/logo.png',
                     width: 200,
                   ),
-                  CircularProgressIndicator(
+                  const CircularProgressIndicator(
                     valueColor: AlwaysStoppedAnimation(
                       Colors.white,
                     ),

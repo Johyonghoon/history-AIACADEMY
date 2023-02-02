@@ -1,8 +1,12 @@
-import 'package:flutterproject/ch05_basic_widget/icon_button_widget.dart';
-import 'package:flutterproject/ch05_basic_widget/outlined_button_widget.dart';
 import 'package:flutter/material.dart';
 
+void main(){
+  runApp(const GestureDetectorWidgetExample());
+}
+
 class GestureDetectorWidgetExample extends StatelessWidget {
+  const GestureDetectorWidgetExample({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -10,20 +14,20 @@ class GestureDetectorWidgetExample extends StatelessWidget {
         body: Center(
           child: GestureDetector(
             // 한 번 탭했을 때 실행할 함수
-            onTap: (){
+            onTap: () {
               print('on tap');
             },
             // 두 번 탭했을 때 실행할 함수
-            onDoubleTap: ( ){
+            onDoubleTap: () {
               print('on double tap');
             },
             // 길게 눌렀을 때 실행할 함수
-            onLongPress: (){
+            onLongPress: () {
               print('on long press');
             },
             // Gesture를 적용할 위젯
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.red,
               ),
               width: 100.0,

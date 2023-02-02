@@ -1,7 +1,9 @@
-import 'package:flutterproject/ch05_basic_widget/outlined_button_widget.dart';
+import 'package:flutterproject/ch05_basic_widget/2-2. outlined_button_widget.dart';
 import 'package:flutter/material.dart';
 
 class ElevatedButtonWidgetExample extends StatelessWidget {
+  const ElevatedButtonWidgetExample({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,7 +17,7 @@ class ElevatedButtonWidgetExample extends StatelessWidget {
               backgroundColor: Colors.red,
             ),
             // 버튼에 들어갈 위젯
-            child: Text('엘레베이티드 버튼'),
+            child: const Text('Elevated Button'),
           ),
         ),
       ),

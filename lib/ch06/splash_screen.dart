@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(
-    const SplashScreen(),
-  );
+  runApp(SplashScreen());
 }
 
 class SplashScreen extends StatelessWidget {
@@ -14,7 +12,7 @@ class SplashScreen extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: Color(0xFFF99231),
           ),
           child: Row(
@@ -24,10 +22,10 @@ class SplashScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/ch04_hello/images/logo.png',
+                    'assets/ch06/images/logo.png',
                     width: 200,
                   ),
-                  const CircularProgressIndicator(
+                  CircularProgressIndicator(
                     valueColor: AlwaysStoppedAnimation(
                       Colors.white,
                     ),

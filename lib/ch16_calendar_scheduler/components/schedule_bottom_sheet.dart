@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutterproject/admin/utl/logger.dart';
 import 'package:flutterproject/admin/utl/validator.dart';
+import 'package:flutterproject/ch16_calendar_scheduler/models/schedule.dart';
 import 'package:hive/hive.dart';
-
+import 'package:uuid/uuid.dart';
 import '../constants/colors.dart';
 import 'custom_text_field.dart';
 
@@ -24,9 +27,9 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
 
   final GlobalKey<FormState> formKey = GlobalKey();
 
-  int? startTime; // 시작 시간 저장 변수
-  int? endTime; // 종료 시간 저장 변수
-  String? content; // 일정 내용 저장 변수
+  int startTime = 0; // 시작 시간 저장 변수
+  int endTime = 0; // 종료 시간 저장 변수
+  String content = "";
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +59,7 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
                         isTime: true,
                         onSaved: (String? val) {
                           // 저장이 실행되면 startTime 변수에 텍스트 필드 값 저장
+                          Logger.showToast(" ### startTime ### $val");
                           startTime = int.parse(val!);
                         },
                         validator: Validator.time,
@@ -69,6 +73,7 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
                         isTime: true,
                         onSaved: (String? val) {
                           // 저장이 실행되면 endTime 변수에 텍스트 필드 값 저장
+                          Logger.showToast(" ### endTime ### $val");
                           endTime = int.parse(val!);
                         },
                         validator: Validator.time,
@@ -84,7 +89,8 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
                     isTime: false,
                     onSaved: (String? val) {
                       // 저장이 실행되면 content 변수에 텍스트 필드 값 저장
-                      content = val;
+                      Logger.showToast(" ### content ### $val");
+                      content = val!;
                     },
                     validator: Validator.content,
                   ),
@@ -111,8 +117,15 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
 
   void onSavePressed() async {
     Logger.showToast("3 onSavePressed: ");
-    final schedules = Hive.box('schedules');
-    //schedules.put('david', Schedule('david', 20, ['Tom', 'Ben']);
+    formKey.currentState!.save();
+    final schedules = Hive.box<Schedule>('schedules');
+    String temp = const Uuid().v4();
+    Logger.showToast("4 ID: $temp");
+    Schedule schedule = Schedule(temp, content!, widget.selectedDate, startTime!, endTime!);
+    schedules.put(temp, schedule);
+    final Schedule? returnSchedule = schedules.get(temp);
+    final String res = returnSchedule.toString();
+    Logger.showToast("5 final: $res");
     // Navigator.of(context).pop();
 
   }

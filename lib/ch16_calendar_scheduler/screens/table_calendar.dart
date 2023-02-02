@@ -31,7 +31,6 @@ class _TableCalendarState extends State<TableCalendar> {
         // ➊ 새 일정 버튼
         backgroundColor: PRIMARY_COLOR,
         onPressed: () {
-          Logger.showToast("onPressed: ");
           showModalBottomSheet(
             // ➋ BottomSheet 열기
             context: context,

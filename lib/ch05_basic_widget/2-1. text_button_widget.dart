@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TextButtonWidgetExample extends StatelessWidget {
+  const TextButtonWidgetExample({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,7 +17,7 @@ class TextButtonWidgetExample extends StatelessWidget {
               foregroundColor: Colors.red,
             ),
             // 버튼에 넣을 위젯
-            child: Text('텍스트 버튼'),
+            child: const Text('Text Button'),
           ),
         ),
       ),

@@ -6,18 +6,18 @@ part of 'schedule.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class SchedulesAdapter extends TypeAdapter<Schedules> {
+class ScheduleAdapter extends TypeAdapter<Schedule> {
   @override
   final int typeId = 0;
 
   @override
-  Schedules read(BinaryReader reader) {
+  Schedule read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Schedules(
-      fields[0] as int,
+    return Schedule(
+      fields[0] as String,
       fields[1] as String,
       fields[2] as DateTime,
       fields[3] as int,
@@ -26,7 +26,7 @@ class SchedulesAdapter extends TypeAdapter<Schedules> {
   }
 
   @override
-  void write(BinaryWriter writer, Schedules obj) {
+  void write(BinaryWriter writer, Schedule obj) {
     writer
       ..writeByte(5)
       ..writeByte(0)
@@ -47,7 +47,7 @@ class SchedulesAdapter extends TypeAdapter<Schedules> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is SchedulesAdapter &&
+      other is ScheduleAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

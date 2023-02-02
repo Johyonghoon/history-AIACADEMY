@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(const ContainerWidgetExample());
+}
+
 class ContainerWidgetExample extends StatelessWidget {
+  const ContainerWidgetExample({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
