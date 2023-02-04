@@ -5,7 +5,11 @@ def prac_lambda():
 
 def judge_lambda():
     files = input().split()
-    # lambda x :  ,files
+    # 1.jpg 10.png 11.png 2.jpg 3.png
+    for i in files:
+        if i.find('.jpg') != -1:
+            i.split('.jpg').astype(int).zfill(3)
+    print(f"")
 
 
 if __name__ == '__main__':
