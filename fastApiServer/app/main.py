@@ -1,4 +1,3 @@
-import uvicorn
 import os
 import sys
 import logging
@@ -7,15 +6,17 @@ from fastapi_sqlalchemy import DBSessionMiddleware
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse
 from .admin.utils import current_time
-from .env_localhost import DB_URL
-from app.database import Base, engine, init_db
-from fastapi_pagination import LimitOffsetPage, paginate, add_pagination
-from fastapi import FastAPI, APIRouter, Depends, HTTPException
+from app.configs.env import DB_URL
+from app.configs.database import init_db
+from fastapi_pagination import add_pagination
+from fastapi import FastAPI, APIRouter, Depends, HTTPException, WebSocket
 from fastapi.security import APIKeyHeader
 
 from .routers.user import router as user_router
 from .routers.article import router as article_router
-from .test.user import router as test_router
+from .routers.chatbot import router as chatbot_router
+from .routers.skt_chatbot import router as skt_chatbot_router
+from .tests.user import router as test_router
 from mangum import Mangum
 
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
@@ -28,7 +29,9 @@ print(f" ################ app.main Started At {current_time()} #################
 router = APIRouter()
 router.include_router(user_router, prefix="/users", tags=["users"])
 router.include_router(article_router, prefix="/articles", tags=["articles"])
-router.include_router(test_router, prefix="/test", tags=["test"])
+router.include_router(test_router, prefix="/tests", tags=["tests"])
+router.include_router(chatbot_router, prefix="/chatbot", tags=["chatbot"])
+router.include_router(skt_chatbot_router, prefix="/skt-chatbot", tags=["skt-chatbot"])
 app = FastAPI()
 add_pagination(app)
 origins = ["http://localhost:3000"]
@@ -81,3 +84,4 @@ async def say_hello(name: str):
 async def no_match_token():
     return {"message": f"토큰 유효시간이 지났습니다."}
 
+handler = Mangum(app)

@@ -24,4 +24,9 @@ archive.zip
 .*.sw?
 
 # my data
-app/env.py
+app/configs/env_aws.py
+secrets.py
+
+# model
+*.h5
+*.pt

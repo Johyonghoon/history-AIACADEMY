@@ -7,7 +7,7 @@ from fastapi import APIRouter, Depends
 from fastapi_pagination import Page, paginate, add_pagination, Params
 from sqlalchemy.orm import Session
 from starlette.responses import JSONResponse, RedirectResponse
-from app.database import get_db
+from app.configs.database import get_db
 from app.schemas.user import UserDTO, UserUpdate, UserList
 
 router = APIRouter()

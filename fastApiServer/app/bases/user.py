@@ -1,6 +1,6 @@
 from abc import abstractmethod, ABCMeta
 from typing import List
-from app.models.user import User
+from app.entities.user import User
 from app.schemas.user import UserDTO
 
 

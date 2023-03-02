@@ -4,7 +4,7 @@ import pymysql
 from sqlalchemy.orm import Session
 
 from app.bases.article import ArticleBase
-from app.models.article import Article
+from app.entities.article import Article
 from app.schemas.article import ArticleDTO
 
 pymysql.install_as_MySQLdb()

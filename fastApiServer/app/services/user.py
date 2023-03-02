@@ -1,4 +1,4 @@
-from app.models.user import User
+from app.entities.user import User
 
 
 class UserService:

@@ -3,7 +3,7 @@ from typing import List
 
 from app.admin.security import verify_password, generate_token, get_hashed_password, myuuid
 from app.bases.user import UserBase
-from app.models.user import User
+from app.entities.user import User
 from app.schemas.user import UserDTO, UserUpdate
 from sqlalchemy.orm import Session
 import pymysql
