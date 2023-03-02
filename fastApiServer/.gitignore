@@ -28,5 +28,8 @@ app/configs/env_aws.py
 secrets.py
 
 # model
+models/
 *.h5
 *.pt
+data/
+save/
