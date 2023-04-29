@@ -1,6 +1,9 @@
+import warnings
 import matplotlib.pyplot as plt
 from sklearn.neighbors import KNeighborsClassifier
-import warnings
+
+from utils import my_menu
+
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 bream_length = [25.4, 26.3, 26.5, 29.0, 29.0, 29.7, 29.7, 30.0, 30.0, 30.7, 31.0, 31.0,
@@ -17,10 +20,11 @@ smelt_weight = [6.7, 7.5, 7.0, 9.7, 9.8, 8.7, 10.0, 9.9, 9.8, 12.2, 13.4, 12.2, 
 class KNN:
 
     def __init__(self):
+        global fish_data, fish_target
         length = bream_length + smelt_length
         weight = bream_weight + smelt_weight
-        self.fish_data = [[l, w] for l, w in zip(length, weight)]
-        self.fish_target = [1] * 35 + [0] * 14
+        fish_data = [[l, w] for l, w in zip(length, weight)]
+        fish_target = [1] * 35 + [0] * 14
 
     def bream_scatter_plot(self):
         plt.scatter(bream_length, bream_weight)
@@ -36,8 +40,6 @@ class KNN:
         plt.show()
 
     def algorithm(self):
-        fish_data = self.fish_data
-        fish_target = self.fish_target
         kn = KNeighborsClassifier()
         kn.fit(fish_data, fish_target)
         score = kn.score(fish_data, fish_target)
@@ -46,41 +48,45 @@ class KNN:
         print(f"Predict(30, 600) : {predict}")
 
     def algorithm_n_neighbors_option_49(self):
-        fish_data = self.fish_data
-        fish_target = self.fish_target
         kn49 = KNeighborsClassifier(n_neighbors=49)  # n_neighbors default is 5
         kn49.fit(fish_data, fish_target)
         kn49_score = kn49.score(fish_data, fish_target)
         print(f"Result of that n_neighbors option is 49 : {kn49_score}")
         print(f"It's same with 35/49 = {35/49}")
 
-
-KNN_MENUS = ["종료",  # 0
-             "도미 산점도 보기",  # 1
-             "전체 생선 산점도 보기",  # 2
-             "KNN 알고리즘 테스트",  # 3
-             "KNN 알고리즘 옵션 n_neighbors 값이 49일 때",  # 4
-             ]
-
-knn_menu = {"1": lambda x: x.bream_scatter_plot(),
-            "2": lambda x: x.fishes_scatter_plot(),
-            "3": lambda x: x.algorithm(),
-            "4": lambda x: x.algorithm_n_neighbors_option_49(),
-            }
+    def find_not_hunnit_score(self):
+        kn = KNeighborsClassifier()
+        kn.fit(fish_data, fish_target)
+        for n in range(5, 50):
+            kn.n_neighbors = n
+            score = kn.score(fish_data, fish_target)
+            if score < 1:
+                print(f"Not first hunnit score is {n} : {score} ")
+                break
 
 
-def my_menu(ls):
-    for i, j in enumerate(ls):
-        print(f"{i}. {j}")
-    return input('메뉴 선택 : ')
+MENUS = ["종료",  # 0
+         "도미 산점도 보기",  # 1
+         "전체 생선 산점도 보기",  # 2
+         "KNN 알고리즘 테스트",  # 3
+         "KNN 알고리즘 옵션 n_neighbors 값이 49일 때",  # 4
+         "KNN 알고리즘 테스트 점수가 100%가 아닌 n_neighbors 값 찾기",  # 5
+         ]
+
+menu_options = {"1": lambda x: x.bream_scatter_plot(),
+                "2": lambda x: x.fishes_scatter_plot(),
+                "3": lambda x: x.algorithm(),
+                "4": lambda x: x.algorithm_n_neighbors_option_49(),
+                "5": lambda x: x.find_not_hunnit_score(),
+                }
 
 
 if __name__ == '__main__':
     knn = KNN()
     while True:
-        menu = my_menu(KNN_MENUS)
+        menu = my_menu(MENUS)
         if menu == '0':
             print("종료")
             break
         else:
-            knn_menu[menu](knn)
+            menu_options[menu](knn)
