@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 from sklearn.neighbors import KNeighborsClassifier
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
 
 bream_length = [25.4, 26.3, 26.5, 29.0, 29.0, 29.7, 29.7, 30.0, 30.0, 30.7, 31.0, 31.0,
                 31.5, 32.0, 32.0, 32.0, 33.0, 33.0, 33.5, 33.5, 34.0, 34.0, 34.5, 35.0,
@@ -43,7 +45,6 @@ class KNN:
         predict = kn.predict([[30, 600]])
         print(f"Predict(30, 600) : {predict}")
 
-    # This method didn't work my m1 macbook. I asked the author a question and waiting for a response.
     def algorithm_n_neighbors_option_49(self):
         fish_data = self.fish_data
         fish_target = self.fish_target
@@ -51,8 +52,35 @@ class KNN:
         kn49.fit(fish_data, fish_target)
         kn49_score = kn49.score(fish_data, fish_target)
         print(f"Result of that n_neighbors option is 49 : {kn49_score}")
-        print(f"It's same with {35/49}")
+        print(f"It's same with 35/49 = {35/49}")
+
+
+KNN_MENUS = ["종료",  # 0
+             "도미 산점도 보기",  # 1
+             "전체 생선 산점도 보기",  # 2
+             "KNN 알고리즘 테스트",  # 3
+             "KNN 알고리즘 옵션 n_neighbors 값이 49일 때",  # 4
+             ]
+
+knn_menu = {"1": lambda x: x.bream_scatter_plot(),
+            "2": lambda x: x.fishes_scatter_plot(),
+            "3": lambda x: x.algorithm(),
+            "4": lambda x: x.algorithm_n_neighbors_option_49(),
+            }
+
+
+def my_menu(ls):
+    for i, j in enumerate(ls):
+        print(f"{i}. {j}")
+    return input('메뉴 선택 : ')
 
 
 if __name__ == '__main__':
-    KNN().algorithm()
+    knn = KNN()
+    while True:
+        menu = my_menu(KNN_MENUS)
+        if menu == '0':
+            print("종료")
+            break
+        else:
+            knn_menu[menu](knn)

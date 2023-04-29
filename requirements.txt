@@ -1,2 +1,4 @@
-matplotlib
-scikit-learn
+matplotlib==3.5.1
+numpy==1.21.5
+scikit-learn==1.0.2
+tensorflow==2.8.0
