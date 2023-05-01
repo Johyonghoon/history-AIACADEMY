@@ -25,7 +25,7 @@ class LRModel:
         train_input, test_input, train_target, test_target = train_test_split(fish_input, fish_target, random_state=42)
         train_scaled, test_scaled = self.transformer()
 
-    def check_data(self):
+    def print_fish_data(self):
         print(f"##### 상위 5개 행 출력하기 ##### \n"
               f"{fish.head()} \n\n"
               f"##### 생선 종류 확인하기(특정 컬럼 확인하기) ##### \n"
@@ -106,7 +106,7 @@ MENUS = ["종료",  # 0
          "로지스틱 회귀 다중 분류하기",  # 5
          ]
 
-menu_options = {"1": lambda x: x.check_data(),
+menu_options = {"1": lambda x: x.print_fish_data(),
                 "2": lambda x: x.k_neighbors_classifier(),
                 "3": lambda x: x.graph_of_sigmoid(),
                 "4": lambda x: x.lr_binary_classification(),
